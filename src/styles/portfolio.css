@@ -1,0 +1,181 @@
+@import "./base.css";
+
+/* ========================================================================= */
+/* PORTFOLIO PAGE SPECIFIC STYLES                                            */
+/* ========================================================================= */
+
+/* Portfolio Hero PNG Cutout Floating Presentation (No Rectangular Box) */
+#portfolio-hero-img {
+  filter: drop-shadow(0 20px 40px rgba(220, 38, 38, 0.28)) drop-shadow(0 10px 20px rgba(245, 158, 11, 0.2));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  will-change: transform;
+}
+
+#portfolio-hero-img:hover {
+  transform: scale(1.03) translateY(-4px);
+  filter: drop-shadow(0 25px 50px rgba(220, 38, 38, 0.35)) drop-shadow(0 15px 30px rgba(245, 158, 11, 0.3));
+}
+
+/* Category Filter Bar Buttons */
+.portfolio-filter-btn {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.portfolio-filter-btn.active {
+  background-color: var(--primary);
+  color: #0e0e10;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 184, 0, 0.3);
+}
+
+.portfolio-filter-btn:not(.active):hover {
+  background-color: var(--surface-high);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* Portfolio Item Cards */
+.portfolio-item-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
+  background-color: var(--surface);
+}
+
+.portfolio-item-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 220, 161, 0.5);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 20px -5px rgba(255, 184, 0, 0.2);
+}
+
+/* Vertical 9:16 Social Reels Aspect Ratio */
+.reel-aspect-ratio {
+  aspect-ratio: 9 / 16;
+}
+
+/* Video Preview Modal Dialog */
+#portfolio-video-modal {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.3s ease;
+}
+
+#portfolio-video-modal.active {
+  display: flex !important;
+  opacity: 1;
+}
+
+#portfolio-video-modal .modal-content-box {
+  animation: modalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Video Play HUD Icon & Hover Pulse */
+.portfolio-play-trigger {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+}
+
+.portfolio-play-trigger:hover {
+  transform: scale(1.1);
+}
+
+/* Light Mode Portfolio Card Elevation & Shadow Refinements */
+html.light .portfolio-item-card,
+html.light .skill-item-card {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+html.light .portfolio-filter-btn.active {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+/* ========================================================================= */
+/* 3D DEPTH FLOW (WORK & MOVEMENT) SHADOW-TYPE MIRROR REFLECTION             */
+/* ========================================================================= */
+.movement-3d-slide {
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+
+.slide-card {
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* Dark elliptical contact shadow between image card and floor */
+.slide-contact-shadow {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.6) 45%, transparent 75%);
+  filter: blur(4px);
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Mirror reflection with smooth vertical gradient falloff */
+.slide-reflection {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+  border-radius: 0 0 16px 16px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.slide-reflection-img {
+  transform: scaleY(-1);
+  filter: brightness(0.55) contrast(1.2) blur(0.7px);
+  opacity: 0.85;
+}
+
+/* Layered shadow gradients to give dark mirror-glass depth */
+.reflection-shadow-overlay {
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.45) 0%, 
+    rgba(0, 0, 0, 0.72) 42%, 
+    var(--surface-container-low, #0e0e10) 96%
+  );
+  pointer-events: none;
+}
+
+.reflection-dark-fade {
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(0, 0, 0, 0.35) 25%, 
+    var(--surface-container-low, #0e0e10) 90%
+  );
+  pointer-events: none;
+}
+
+/* Light Mode Mirror Reflection Adaptation */
+html.light .slide-contact-shadow {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.2) 45%, transparent 75%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+html.light .slide-reflection-img {
+  filter: brightness(0.7) contrast(1.1) blur(0.7px);
+  opacity: 0.75;
+}
+
+html.light .reflection-shadow-overlay {
+  background: linear-gradient(to bottom, 
+    rgba(255, 255, 255, 0.15) 0%, 
+    rgba(235, 235, 240, 0.7) 45%, 
+    var(--surface-container-low, #f4f4f6) 96%
+  );
+}
+
+html.light .reflection-dark-fade {
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    rgba(235, 235, 240, 0.4) 30%, 
+    var(--surface-container-low, #f4f4f6) 90%
+  );
+}
+

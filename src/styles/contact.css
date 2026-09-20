@@ -1,0 +1,119 @@
+@import "./base.css";
+
+/* ========================================================================= */
+/* CONTACT PAGE SPECIFIC STYLES                                              */
+/* ========================================================================= */
+
+/* Form Input & Textarea Focus States */
+#contact-inquiry-form input:focus,
+#contact-inquiry-form textarea:focus,
+#contact-inquiry-form select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.18);
+  background-color: var(--surface-high);
+}
+
+/* Custom Radio Scope Buttons */
+.project-scope-label {
+  transition: all 0.2s ease;
+}
+
+.project-scope-label:has(input[type="radio"]:checked) {
+  border-color: var(--primary);
+  background-color: rgba(255, 184, 0, 0.12);
+  color: var(--primary);
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
+}
+
+/* Custom Range Input Slider (Rate & Turnaround Estimator) */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--surface-high);
+  border-radius: 9999px;
+  height: 6px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--primary-container);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+}
+
+/* Direct Quick Action CTAs */
+.contact-quick-cta {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.contact-quick-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.7);
+}
+
+/* Rate Estimator Highlight Card */
+.rate-estimator-card {
+  background: linear-gradient(135deg, var(--surface-low) 0%, var(--surface) 100%);
+  border: 1px solid rgba(255, 220, 161, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.rate-estimator-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Light Mode Contact Page Refinements */
+html.light input:not([type="range"]),
+html.light textarea,
+html.light select {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+html.light .rate-estimator-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+html.light .contact-quick-cta:hover {
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+}
+

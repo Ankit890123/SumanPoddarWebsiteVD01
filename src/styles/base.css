@@ -1,0 +1,236 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--surface-container-lowest);
+    color: var(--on-surface);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Typography styles */
+.font-syne {
+  font-family: 'Syne', sans-serif;
+}
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-display-hero {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.font-headline-xl {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(32px, 4.5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.font-headline-lg {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.font-headline-md {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 2.2vw, 24px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.font-title-sm {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+
+.font-label-caps {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.font-technical-data {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* ========================================================================= */
+/* THEME COLOR DEFINITIONS (DARK & LIGHT MODE)                               */
+/* ========================================================================= */
+
+/* Dark Mode (Default) */
+:root,
+html.dark {
+  color-scheme: dark;
+
+  --surface-lowest: #0e0e10;
+  --surface-low: #1c1b1e;
+  --surface: #201f22;
+  --surface-high: #2a2a2c;
+  --surface-highest: #353437;
+  --surface-bright: #39393b;
+  --surface-container-lowest: #0e0e10;
+  --surface-container-low: #1c1b1e;
+  --surface-container: #201f22;
+  --surface-container-high: #2a2a2c;
+  --surface-container-highest: #353437;
+  --background: #131315;
+  --primary: #ffdca1;
+  --primary-container: #ffb800;
+  --primary-fixed-dim: #ffba20;
+  --on-primary: #412d00;
+  --secondary: #d3fbff;
+  --secondary-container: #00eefc;
+  --on-secondary-container: #00686f;
+  --secondary-fixed: #7df4ff;
+  --on-surface: #e5e1e4;
+  --on-surface-variant: #d5c4ab;
+  --outline: #9e8f78;
+  --outline-variant: #514532;
+  --error: #ffb4ab;
+
+  /* Space-separated RGB values for Tailwind alpha utilities (e.g. bg-surface/80) */
+  --color-surface-container-lowest: 14 14 16;
+  --color-surface-container-low: 28 27 30;
+  --color-surface-container: 32 31 34;
+  --color-surface-container-high: 42 42 44;
+  --color-surface-container-highest: 53 52 55;
+  --color-surface-bright: 57 57 59;
+  --color-surface: 19 19 21;
+  --color-background: 19 19 21;
+  --color-primary: 255 220 161;
+  --color-primary-container: 255 184 0;
+  --color-primary-fixed-dim: 255 186 32;
+  --color-on-primary: 65 45 0;
+  --color-secondary: 211 251 255;
+  --color-secondary-container: 0 238 252;
+  --color-on-secondary-container: 0 104 111;
+  --color-secondary-fixed: 125 244 255;
+  --color-on-surface: 229 225 228;
+  --color-on-surface-variant: 213 196 171;
+  --color-outline: 158 143 120;
+  --color-outline-variant: 81 69 50;
+  --color-error: 255 180 171;
+}
+
+/* Light Mode */
+html.light {
+  color-scheme: light;
+
+  --surface-lowest: #ffffff;
+  --surface-low: #f8f9fa;
+  --surface: #f1f3f5;
+  --surface-high: #e9ecef;
+  --surface-highest: #dee2e6;
+  --surface-bright: #ffffff;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f8f9fa;
+  --surface-container: #f1f3f5;
+  --surface-container-high: #e9ecef;
+  --surface-container-highest: #dee2e6;
+  --surface: #fbfbfe;
+  --background: #fbfbfe;
+  --primary: #d97706;
+  --primary-container: #f59e0b;
+  --primary-fixed-dim: #b45309;
+  --on-primary: #ffffff;
+  --secondary: #0891b2;
+  --secondary-container: #06b6d4;
+  --on-secondary-container: #164e63;
+  --secondary-fixed: #0e7490;
+  --on-surface: #111827;
+  --on-surface-variant: #4b5563;
+  --outline: #9ca3af;
+  --outline-variant: #e5e7eb;
+  --error: #dc2626;
+
+  /* Space-separated RGB values for Tailwind alpha utilities */
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 248 249 250;
+  --color-surface-container: 241 243 245;
+  --color-surface-container-high: 233 236 239;
+  --color-surface-container-highest: 222 226 230;
+  --color-surface-bright: 255 255 255;
+  --color-surface: 251 251 254;
+  --color-background: 251 251 254;
+  --color-primary: 217 119 6;
+  --color-primary-container: 245 158 11;
+  --color-primary-fixed-dim: 180 83 9;
+  --color-on-primary: 255 255 255;
+  --color-secondary: 8 145 178;
+  --color-secondary-container: 6 182 212;
+  --color-on-secondary-container: 22 78 99;
+  --color-secondary-fixed: 14 116 144;
+  --color-on-surface: 17 24 39;
+  --color-on-surface-variant: 75 85 99;
+  --color-outline: 156 163 175;
+  --color-outline-variant: 229 231 235;
+  --color-error: 220 38 38;
+}
+
+/* Theme Toggle Button Icons State */
+html.dark .theme-icon-dark { display: inline-flex !important; }
+html.dark .theme-icon-light { display: none !important; }
+
+html.light .theme-icon-dark { display: none !important; }
+html.light .theme-icon-light { display: inline-flex !important; }
+
+/* Global Header Elevation Refinements */
+html.light header {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Base Keyframe Animations */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.95); }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+

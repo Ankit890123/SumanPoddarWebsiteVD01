@@ -1,0 +1,99 @@
+@import "./base.css";
+
+/* ========================================================================= */
+/* HOME PAGE (INDEX) SPECIFIC STYLES                                         */
+/* ========================================================================= */
+
+/* Audio Visualizer Equalizer Bars Animation */
+@keyframes audioBounce {
+  0%, 100% {
+    height: 4px;
+    opacity: 0.5;
+  }
+  50% {
+    height: 18px;
+    opacity: 1;
+  }
+}
+
+.audio-bar {
+  animation: audioBounce 1.2s ease-in-out infinite;
+}
+
+.audio-bar:nth-child(1) { animation-delay: 0.05s; }
+.audio-bar:nth-child(2) { animation-delay: 0.25s; }
+.audio-bar:nth-child(3) { animation-delay: 0.15s; }
+.audio-bar:nth-child(4) { animation-delay: 0.35s; }
+
+/* Interactive Before/After Log Wipe Slider */
+#home-wipe-log-layer {
+  will-change: width;
+  transition: width 0.05s ease-out;
+}
+
+#home-wipe-handle {
+  will-change: left;
+  transition: left 0.05s ease-out;
+}
+
+#home-wipe-handle:active {
+  cursor: ew-resize;
+}
+
+/* Continuous Timeline Horizontal Track */
+.timeline-track-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.timeline-track-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.timeline-frame-node {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
+}
+
+.timeline-frame-node:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* Home Hero Showreel Glow & Ambient Backdrop */
+.hero-showreel-glow {
+  position: absolute;
+  inset: -15%;
+  background: radial-gradient(circle, rgba(255, 184, 0, 0.12) 0%, rgba(0, 238, 252, 0.06) 50%, transparent 75%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Featured Project Card Hover Shimmer */
+.featured-project-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.featured-project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(255, 220, 161, 0.15);
+}
+
+/* Video Player Progress Track */
+#client-video-progress {
+  transition: width 0.1s linear;
+}
+
+#slide-progress {
+  transition: width 0.3s ease;
+}
+
+/* Light Mode Home Featured Project & Service Card Elevation */
+html.light .featured-project-card {
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+}
+
+html.light .featured-project-card:hover {
+  box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.12), 0 0 20px -5px rgba(217, 119, 6, 0.2);
+}
+
