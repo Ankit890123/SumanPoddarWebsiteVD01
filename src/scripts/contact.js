@@ -94,11 +94,34 @@ function initForms() {
 
   // Contact form
   const contactForm = document.getElementById('contact-inquiry-form');
+  const successMsg = document.getElementById('contact-success-msg');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('contact-name')?.value || 'Director';
-      showToast(`Inquiry received from ${name}. Studio coordinator will reach out within 2 hours.`);
+      const name = (document.getElementById('contact-name')?.value || 'Client').trim();
+      const email = (document.getElementById('contact-email')?.value || '').trim();
+      const phone = (document.getElementById('contact-phone')?.value || '').trim();
+      const notes = (document.getElementById('contact-notes')?.value || '').trim();
+
+      try {
+        const inquiries = JSON.parse(localStorage.getItem('technosra_contact_inquiries') || '[]');
+        inquiries.push({
+          name,
+          email,
+          phone,
+          notes,
+          timestamp: new Date().toISOString()
+        });
+        localStorage.setItem('technosra_contact_inquiries', JSON.stringify(inquiries));
+      } catch (err) {
+        // ignore storage errors
+      }
+
+      if (successMsg) {
+        successMsg.classList.remove('hidden');
+      }
+
+      showToast(`Thank you ${name}! Inquiry received. We'll contact you at ${email || phone}.`);
       contactForm.reset();
     });
   }

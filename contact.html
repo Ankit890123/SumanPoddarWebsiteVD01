@@ -93,7 +93,7 @@
       <!-- Brand & Status -->
       <div class="flex items-center gap-4">
         <a href="/index.html" data-path="home" class="flex items-center gap-3 group">
-          <img src="src\assets\images\tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
+          <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
           <div class="flex flex-col">
             <span class="font-syne font-bold text-sm tracking-wider text-on-surface uppercase group-hover:text-primary transition-colors">Techno SRA</span>
             <span class="font-space font-medium text-[10px] tracking-widest text-on-surface-variant uppercase">TSRA • Suman Poddar</span>
@@ -195,71 +195,159 @@
         </div>
 
         <div class="rounded-2xl border border-outline/30 bg-surface-container p-8 sm:p-12 shadow-2xl">
-          <form id="contact-inquiry-form" class="space-y-8">
+          <form id="contact-inquiry-form" class="space-y-6">
             
-            <!-- Project Type Selection -->
-            <div>
-              <label class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-3">Project Scope</label>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <label class="flex items-center justify-center p-3 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:border-primary cursor-pointer font-space text-xs text-on-surface">
-                  <input type="radio" name="project_scope" value="commercial" class="sr-only" checked />
-                  <span>Commercial Edit</span>
-                </label>
-                <label class="flex items-center justify-center p-3 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:border-primary cursor-pointer font-space text-xs text-on-surface">
-                  <input type="radio" name="project_scope" value="music_video" class="sr-only" />
-                  <span>Music Video</span>
-                </label>
-                <label class="flex items-center justify-center p-3 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:border-primary cursor-pointer font-space text-xs text-on-surface">
-                  <input type="radio" name="project_scope" value="color" class="sr-only" />
-                  <span>Color Grading</span>
-                </label>
-                <label class="flex items-center justify-center p-3 rounded-lg border border-outline-variant/40 bg-surface-container-low hover:border-primary cursor-pointer font-space text-xs text-on-surface">
-                  <input type="radio" name="project_scope" value="mentorship" class="sr-only" />
-                  <span>1-on-1 Mentorship</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Name & Email -->
+            <!-- Name & Gmail -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-                <label for="contact-name" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Director / Producer Name *</label>
-                <input type="text" id="contact-name" required placeholder="e.g. Julian Vance" class="w-full px-4 py-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none" />
+                <label for="contact-name" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Name *</label>
+                <input type="text" id="contact-name" required placeholder="Enter your full name" class="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none transition-colors" />
               </div>
               <div>
-                <label for="contact-email" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Production Email *</label>
-                <input type="email" id="contact-email" required placeholder="name@agency.com" class="w-full px-4 py-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none" />
+                <label for="contact-email" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Gmail / Email *</label>
+                <input type="email" id="contact-email" required placeholder="name@gmail.com" class="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none transition-colors" />
               </div>
             </div>
 
-            <!-- Budget & Timeline -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="contact-budget" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Estimated Post Budget</label>
-                <select id="contact-budget" class="w-full px-4 py-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-space text-sm focus:border-primary focus:outline-none">
-                  <option value="5k-15k">$5,000 – $15,000 (Shorts & Indie Clips)</option>
-                  <option value="15k-30k" selected>$15,000 – $30,000 (Broadcast / National)</option>
-                  <option value="30k+">$30,000+ (Global Campaign / Feature)</option>
-                </select>
-              </div>
-              <div>
-                <label for="contact-timeline" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Target Locked Cut Date</label>
-                <input type="date" id="contact-timeline" class="w-full px-4 py-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-space text-sm focus:border-primary focus:outline-none" />
-              </div>
-            </div>
-
-            <!-- Project Brief -->
+            <!-- Phone Number -->
             <div>
-              <label for="contact-notes" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Treatment / Footage Details</label>
-              <textarea id="contact-notes" rows="4" placeholder="Tell us about the project story, cameras used, footage hours, and creative vision..." class="w-full px-4 py-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none"></textarea>
+              <label for="contact-phone" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Phone Number *</label>
+              <input type="tel" id="contact-phone" required placeholder="+91 98765 43210 / +1 (555) 000-0000" class="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none transition-colors" />
             </div>
 
-            <button type="submit" class="w-full py-4 rounded-lg bg-primary-container text-on-primary font-space font-extrabold text-sm uppercase tracking-wider hover:bg-primary-fixed-dim transition-all shadow-xl flex items-center justify-center gap-2">
-              <span>Submit Project Inquiry</span>
+            <!-- Description -->
+            <div>
+              <label for="contact-notes" class="block font-space text-xs uppercase tracking-wider text-on-surface-variant mb-2">Description *</label>
+              <textarea id="contact-notes" rows="5" required placeholder="Describe your project, vision, goals, and timeline..." class="w-full px-4 py-3.5 rounded-xl bg-surface-container-low border border-outline-variant/40 text-on-surface font-jakarta text-sm focus:border-primary focus:outline-none transition-colors"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-primary-container text-on-primary font-space font-extrabold text-sm uppercase tracking-wider hover:bg-primary-fixed-dim transition-all shadow-xl flex items-center justify-center gap-2 cursor-pointer">
+              <span>Submit Inquiry</span>
               <span class="material-symbols-outlined text-base">send</span>
             </button>
 
+            <!-- Success Confirmation Box -->
+            <div id="contact-success-msg" class="hidden p-4 rounded-xl bg-primary/10 border border-primary/30 text-primary font-space text-xs text-center">
+              ✓ Inquiry submitted successfully! The tecnosra team will reach out to you within 24 hours.
+            </div>
+
           </form>
+        </div>
+
+        <!-- Official Direct Reach & Socials Hub -->
+        <div class="mt-12 rounded-2xl border border-outline/30 bg-surface-container p-6 sm:p-8 shadow-xl">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/30 pb-5 mb-6">
+            <div>
+              <div class="text-primary font-space text-xs uppercase tracking-widest font-bold">DIRECT TRANSMISSIONS</div>
+              <h3 class="font-syne font-bold text-xl sm:text-2xl text-on-surface uppercase mt-1">Official Channels &amp; Socials</h3>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40 font-mono text-xs text-secondary">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>DIRECT MESSAGES ACTIVE</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <!-- Gmail / Direct Email (Featured) -->
+            <a href="mailto:technosra26@gmail.com" class="p-4 rounded-xl bg-surface-container-low border border-primary/40 hover:border-primary transition-all flex items-center justify-between group shadow-sm sm:col-span-2 lg:col-span-3 hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <span class="material-symbols-outlined text-xl">mail</span>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-primary uppercase font-bold tracking-wider">OFFICIAL INBOX (GMAIL)</div>
+                  <div class="font-mono text-sm sm:text-base font-bold text-on-surface group-hover:text-primary transition-colors">technosra26@gmail.com</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-sm text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/invites/contact/?utm_content=jnn9een&stkn=ytkot12qek7b" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-pink-500/60 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-pink-500/10 text-pink-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-pink-400 uppercase font-bold">INSTAGRAM</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">@officialsuman_26</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-pink-400 transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/@technosra?si=TgkENsNog_GrDwuq" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-red-500/60 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-red-400 uppercase font-bold">YOUTUBE</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">@technosra</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-red-400 transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/suman-poddar-4772aa270?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-sky-500/60 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-sky-400 uppercase font-bold">LINKEDIN</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">Suman Poddar</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-sky-400 transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- Behance -->
+            <a href="https://www.behance.net/sumankumar381" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-blue-500/60 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.084 0-5.625-3.003-5.625-5.992 0-3.568 2.067-6.008 5.625-6.008 4.095 0 5.375 3.197 5.375 6.008 0 .428-.029.843-.09 1.246h-8.08c.088 1.83 1.157 2.923 2.924 2.923 1.345 0 2.235-.583 2.659-1.177h2.313zm-7.896-3.834h5.271c-.085-1.517-.92-2.343-2.585-2.343-1.611 0-2.551.843-2.686 2.343zm-7.83-8.166h-8v14h7.525c3.272 0 5.475-1.583 5.475-4.475 0-1.895-1.077-3.238-2.687-3.791 1.258-.616 2.087-1.808 2.087-3.334 0-2.613-2.072-2.4-4.4-2.4zm-5 2.5h2.247c1.378 0 2.253.518 2.253 1.637 0 1.16-.92 1.704-2.348 1.704h-2.152v-3.341zm0 5.341h2.558c1.554 0 2.517.65 2.517 1.954 0 1.353-.984 2.046-2.568 2.046h-2.507v-4z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-blue-400 uppercase font-bold">BEHANCE</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">sumankumar381</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-blue-400 transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/share/14yETeFnV7t/?mibextid=wwXIfr" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-indigo-500/60 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-indigo-400 uppercase font-bold">FACEBOOK</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">Suman Poddar</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-indigo-400 transition-colors">arrow_outward</span>
+            </a>
+
+            <!-- X (Twitter) -->
+            <a href="https://x.com/technosra?s=11" target="_blank" rel="noopener" class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 hover:border-neutral-400 transition-all flex items-center justify-between group hover:bg-surface-container-high">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-neutral-500/10 text-on-surface flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </div>
+                <div>
+                  <div class="font-space text-[10px] text-on-surface-variant uppercase font-bold">X (TWITTER)</div>
+                  <div class="font-syne text-xs sm:text-sm font-bold text-on-surface">@technosra</div>
+                </div>
+              </div>
+              <span class="material-symbols-outlined text-xs text-on-surface-variant group-hover:text-primary transition-colors">arrow_outward</span>
+            </a>
+
+          </div>
         </div>
 
  
@@ -411,7 +499,7 @@
         <div>
           <span id="dossier-category" class="px-2.5 py-1 rounded bg-primary/20 text-primary font-mono text-xs font-bold uppercase">COMMERCIAL AUTO</span>
           <h2 id="dossier-title" class="font-syne font-bold text-2xl sm:text-3xl text-on-surface mt-2">Nissan GT-R: Midnight Protocol</h2>
-          <div id="dossier-client" class="font-mono text-xs text-secondary mt-1">Client: Nissan Motor Corporation // Agency: TBWA\Chiat\Day</div>
+          <div id="dossier-client" class="font-mono text-xs text-secondary mt-1">Client: Nissan Motor Corporation // Agency: TBWA / Chiat / Day</div>
         </div>
         <button id="close-dossier-modal" class="p-1 rounded text-on-surface hover:text-primary transition-colors">
           <span class="material-symbols-outlined">close</span>
@@ -478,42 +566,42 @@
   <div class="animate-marquee whitespace-nowrap flex items-center hover:[animation-play-state:paused]">
     <!-- Block 1 -->
     <div class="flex items-center gap-8 sm:gap-12 md:gap-14 px-6 flex-shrink-0">
-      <img src="src/assets/logos/davinci_resolve.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/davinci_resolve.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
     </div>
 
     <!-- Block 2 (Duplicate for infinite seamless loop) -->
     <div class="flex items-center gap-8 sm:gap-12 md:gap-14 px-6 flex-shrink-0" aria-hidden="true">
-      <img src="src/assets/logos/davinci_resolve.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-      <img src="src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/davinci_resolve.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+      <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
     </div>
   </div>
 </div>
@@ -524,7 +612,7 @@
         
         <div class="md:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="src\assets\images\tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-10 h-10 object-contain" />
+            <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-10 h-10 object-contain" />
             <span class="font-syne font-bold text-base text-on-surface uppercase">Techno SRA • Suman Poddar</span>
           </div>
           <p class="font-jakarta text-xs text-on-surface-variant max-w-sm leading-relaxed">
@@ -553,38 +641,52 @@
         <div class="md:col-span-3 space-y-3">
           <div class="font-space text-xs uppercase tracking-wider text-primary font-bold">Transmissions / Social</div>
           <div class="flex flex-col space-y-2 font-space text-xs text-on-surface-variant">
-            <a href="https://facebook.com/tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="mailto:technosra26@gmail.com" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 fill-current text-blue-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                <span>Facebook (FB)</span>
+                <span class="material-symbols-outlined text-[15px] text-primary shrink-0">mail</span>
+                <span>Gmail</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://instagram.com/tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://www.instagram.com/invites/contact/?utm_content=jnn9een&stkn=ytkot12qek7b" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-pink-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>Instagram @tecnosra</span>
+                <span>Instagram</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://www.upwork.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
-              <span class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 fill-current text-emerald-400 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                <span>Freelancing (Upwork / Fiverr)</span>
-              </span>
-              <span class="material-symbols-outlined text-xs">arrow_outward</span>
-            </a>
-            <a href="https://youtube.com/@tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://youtube.com/@technosra?si=TgkENsNog_GrDwuq" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-red-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                <span>YouTube (YT) Channel</span>
+                <span>YouTube</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://linkedin.com/in/sumanpoddar" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://www.linkedin.com/in/suman-poddar-4772aa270?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-sky-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 <span>LinkedIn</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://www.behance.net/sumankumar381" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-blue-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.084 0-5.625-3.003-5.625-5.992 0-3.568 2.067-6.008 5.625-6.008 4.095 0 5.375 3.197 5.375 6.008 0 .428-.029.843-.09 1.246h-8.08c.088 1.83 1.157 2.923 2.924 2.923 1.345 0 2.235-.583 2.659-1.177h2.313zm-7.896-3.834h5.271c-.085-1.517-.92-2.343-2.585-2.343-1.611 0-2.551.843-2.686 2.343zm-7.83-8.166h-8v14h7.525c3.272 0 5.475-1.583 5.475-4.475 0-1.895-1.077-3.238-2.687-3.791 1.258-.616 2.087-1.808 2.087-3.334 0-2.613-2.072-2.4-4.4-2.4zm-5 2.5h2.247c1.378 0 2.253.518 2.253 1.637 0 1.16-.92 1.704-2.348 1.704h-2.152v-3.341zm0 5.341h2.558c1.554 0 2.517.65 2.517 1.954 0 1.353-.984 2.046-2.568 2.046h-2.507v-4z"/></svg>
+                <span>Behance</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://www.facebook.com/share/14yETeFnV7t/?mibextid=wwXIfr" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-indigo-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://x.com/technosra?s=11" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-on-surface group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>X (Twitter)</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>

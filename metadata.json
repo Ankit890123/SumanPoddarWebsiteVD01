@@ -1,0 +1,8 @@
+{
+  "name": "tecnosra // Suman Poddar - Video Editor & Production House",
+  "description": "Portfolio and Production House for Suman Poddar (tecnosra) - Freelance Video Editor, Videographer, AI video artist and motion designer crafting cinematic visual content.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

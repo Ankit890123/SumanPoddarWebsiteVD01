@@ -96,3 +96,76 @@ html.light .featured-project-card {
 html.light .featured-project-card:hover {
   box-shadow: 0 16px 30px -10px rgba(0, 0, 0, 0.12), 0 0 20px -5px rgba(217, 119, 6, 0.2);
 }
+
+/* ========================================================================= */
+/* 3D VIDEO SLIDER STYLES                                                    */
+/* ========================================================================= */
+
+.slider-3d-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 45%;
+}
+
+.slider-3d-card {
+  position: absolute;
+  top: 0;
+  width: 290px;
+  max-width: 86vw;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 640px) {
+  .slider-3d-card {
+    width: 320px;
+  }
+}
+
+.slider-3d-card[data-pos="0"] {
+  transform: translateX(0%) scale(1) translateZ(0px) rotateY(0deg);
+  opacity: 1;
+  z-index: 30;
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.85));
+  pointer-events: auto;
+}
+
+.slider-3d-card[data-pos="-1"] {
+  transform: translateX(-78%) scale(0.85) translateZ(-130px) rotateY(26deg);
+  opacity: 0.65;
+  z-index: 20;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6)) brightness(0.65);
+  cursor: pointer;
+}
+
+.slider-3d-card[data-pos="1"] {
+  transform: translateX(78%) scale(0.85) translateZ(-130px) rotateY(-26deg);
+  opacity: 0.65;
+  z-index: 20;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.6)) brightness(0.65);
+  cursor: pointer;
+}
+
+.slider-3d-card[data-pos="-2"] {
+  transform: translateX(-140%) scale(0.7) translateZ(-260px) rotateY(38deg);
+  opacity: 0.22;
+  z-index: 10;
+  filter: brightness(0.4);
+  pointer-events: none;
+}
+
+.slider-3d-card[data-pos="2"] {
+  transform: translateX(140%) scale(0.7) translateZ(-260px) rotateY(-38deg);
+  opacity: 0.22;
+  z-index: 10;
+  filter: brightness(0.4);
+  pointer-events: none;
+}
+
+.slider-3d-card[data-pos="hidden"] {
+  transform: translateX(0%) scale(0.5) translateZ(-400px);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+

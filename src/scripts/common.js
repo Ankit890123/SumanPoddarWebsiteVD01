@@ -541,6 +541,236 @@ function setupWiper(containerId, overlayId, handleId) {
   }, { passive: true });
 }
 
+// Universal Video Play Button Auto-Hide Engine (Across Entire Website)
+function initGlobalVideoAutoHide() {
+  function getPlayElements(video) {
+    const parent = video.closest('.slider-3d-card, #hero-reel-wrapper, .portfolio-item-card, #screening-modal, .group, .relative') || video.parentElement;
+    if (!parent) return { parent: null, elements: [] };
+    const elements = Array.from(parent.querySelectorAll(`
+      .slider-video-play-btn,
+      #hero-reel-play-btn,
+      #modal-play-btn,
+      .card-play-overlay,
+      .card-play-icon,
+      .reel-inline-play-btn,
+      .reel-play-icon,
+      [id*="play-btn"],
+      [class*="play-btn"],
+      [class*="play-overlay"]
+    `));
+    return { parent, elements };
+  }
+
+  function hidePlayUI(video) {
+    const { parent, elements } = getPlayElements(video);
+    if (parent) parent.classList.add('video-is-playing');
+    elements.forEach(el => {
+      el.classList.add('video-btn-hidden', 'opacity-0', 'pointer-events-none');
+      el.style.opacity = '0';
+      el.style.visibility = 'hidden';
+      el.style.pointerEvents = 'none';
+    });
+  }
+
+  function showPlayUI(video) {
+    const { parent, elements } = getPlayElements(video);
+    if (parent) parent.classList.remove('video-is-playing');
+    elements.forEach(el => {
+      el.classList.remove('video-btn-hidden', 'opacity-0', 'pointer-events-none');
+      el.style.opacity = '';
+      el.style.visibility = '';
+      el.style.pointerEvents = '';
+      const icon = el.querySelector('.material-symbols-outlined') || (el.classList.contains('material-symbols-outlined') ? el : null);
+      if (icon) icon.textContent = 'play_arrow';
+    });
+  }
+
+  // Use capture phase (true) because HTML5 play/pause/ended don't bubble
+  document.addEventListener('play', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      hidePlayUI(e.target);
+    }
+  }, true);
+
+  document.addEventListener('pause', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      showPlayUI(e.target);
+    }
+  }, true);
+
+  document.addEventListener('ended', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      showPlayUI(e.target);
+    }
+  }, true);
+
+  // Global click-to-pause on playing videos
+  document.addEventListener('click', (e) => {
+    if (e.target && e.target.tagName === 'VIDEO') {
+      const vid = e.target;
+      if (!vid.paused) {
+        vid.pause();
+        showPlayUI(vid);
+      }
+    }
+  }, true);
+
+  // Check initial state of all videos on page load
+  const allVideos = document.querySelectorAll('video');
+  allVideos.forEach(v => {
+    if (!v.paused) {
+      hidePlayUI(v);
+    } else {
+      showPlayUI(v);
+    }
+  });
+}
+
+// Universal Director's Cut Screening Modal
+function initScreeningModal() {
+  const modal = document.getElementById('screening-modal');
+  const closeBtn = document.getElementById('close-modal-btn');
+  const triggers = document.querySelectorAll('.open-modal-trigger');
+  const playPauseBtn = document.getElementById('modal-play-btn');
+  const playIcon = document.getElementById('modal-play-icon');
+  const modalImage = document.getElementById('modal-img-target');
+  const modalVideo = document.getElementById('modal-video-target');
+  const modalTitle = document.getElementById('modal-title-text');
+
+  if (!modal) return;
+
+  function stopModalVideo() {
+    if (modalVideo) {
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+      modalVideo.classList.add('hidden');
+    }
+    if (modalImage) modalImage.classList.remove('hidden');
+    if (playPauseBtn) {
+      playPauseBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+      playPauseBtn.style.opacity = '';
+      playPauseBtn.style.visibility = '';
+    }
+    if (playIcon) playIcon.textContent = 'play_arrow';
+    modal.classList.remove('video-is-playing');
+  }
+
+  function updateModalPlayUI(playing) {
+    if (playIcon) playIcon.textContent = playing ? 'pause' : 'play_arrow';
+    if (playPauseBtn) {
+      if (playing) {
+        playPauseBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playPauseBtn.style.opacity = '0';
+        playPauseBtn.style.visibility = 'hidden';
+        modal.classList.add('video-is-playing');
+      } else {
+        playPauseBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playPauseBtn.style.opacity = '';
+        playPauseBtn.style.visibility = '';
+        modal.classList.remove('video-is-playing');
+      }
+    }
+  }
+
+  triggers.forEach(t => {
+    t.addEventListener('click', () => {
+      const title = t.getAttribute('data-title');
+      const img = t.getAttribute('data-img');
+      const isImgOnly = t.getAttribute('data-img-only') === 'true' || t.getAttribute('data-video') === 'none';
+      const videoSrc = isImgOnly ? null : (t.getAttribute('data-video') || (img ? null : '/src/assets/video/AjantaReel.mp4'));
+
+      if (title && modalTitle) modalTitle.textContent = title;
+      if (img && modalImage) modalImage.src = img;
+
+      if (isImgOnly || !videoSrc) {
+        if (modalVideo) {
+          modalVideo.pause();
+          modalVideo.currentTime = 0;
+          modalVideo.classList.add('hidden');
+        }
+        if (modalImage) modalImage.classList.remove('hidden');
+        if (playPauseBtn) playPauseBtn.classList.add('hidden');
+      } else {
+        if (playPauseBtn) playPauseBtn.classList.remove('hidden');
+        if (modalVideo && videoSrc) {
+          modalVideo.src = videoSrc;
+          modalVideo.classList.remove('hidden');
+          if (modalImage) modalImage.classList.add('hidden');
+          modalVideo.currentTime = 0;
+          modalVideo.play().then(() => {
+            updateModalPlayUI(true);
+          }).catch(() => {
+            updateModalPlayUI(false);
+          });
+        }
+      }
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      stopModalVideo();
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+  }
+
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', () => {
+      if (modalVideo && !modalVideo.classList.contains('hidden')) {
+        if (modalVideo.paused) {
+          modalVideo.play().then(() => {
+            updateModalPlayUI(true);
+            showToast('Playback Resumed');
+          }).catch(() => {});
+        } else {
+          modalVideo.pause();
+          updateModalPlayUI(false);
+          showToast('Playback Paused');
+        }
+      }
+    });
+  }
+
+  if (modalVideo) {
+    modalVideo.addEventListener('play', () => updateModalPlayUI(true));
+    modalVideo.addEventListener('pause', () => updateModalPlayUI(false));
+    modalVideo.addEventListener('ended', () => updateModalPlayUI(false));
+    modalVideo.addEventListener('click', () => {
+      if (modalVideo.paused) {
+        modalVideo.play().then(() => updateModalPlayUI(true)).catch(() => {});
+      } else {
+        modalVideo.pause();
+        updateModalPlayUI(false);
+      }
+    });
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      stopModalVideo();
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  });
+}
+
+// Automatically initialize on DOM ready
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initGlobalVideoAutoHide();
+      initScreeningModal();
+    });
+  } else {
+    initGlobalVideoAutoHide();
+    initScreeningModal();
+  }
+}
+
 export {
   initThemeToggle,
   initCursor,
@@ -549,5 +779,7 @@ export {
   showToast,
   initDossierModal,
   initCurriculumModal,
-  setupWiper
+  setupWiper,
+  initScreeningModal,
+  initGlobalVideoAutoHide
 };

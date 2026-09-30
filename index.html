@@ -94,7 +94,7 @@
       <!-- Brand & Status -->
       <div class="flex items-center gap-4">
         <a href="/index.html" data-path="home" class="flex items-center gap-3 group">
-          <img src="src\assets\images\tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
+          <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
           <div class="flex flex-col">
             <span class="font-syne font-bold text-sm tracking-wider text-on-surface uppercase group-hover:text-primary transition-colors">Techno SRA</span>
             <span class="font-space font-medium text-[10px] tracking-widest text-on-surface-variant uppercase">TSRA • Suman Poddar</span>
@@ -279,11 +279,18 @@
                 <div class="relative w-full h-full rounded-[28px] overflow-hidden bg-black flex flex-col justify-between select-none">
                   
                   <!-- Video Reel Stream -->
-                  <video id="hero-reel-video" src="/src/assets/video/AjantaReel.mp4" poster="/suman_kumar.jpg" class="absolute inset-0 w-full h-full object-cover transition-all duration-700" autoplay muted loop playsinline></video
-                  <img id="hero-reel-img" src="src/assets/images/FinleBTS/Suman 1.png" alt="tecnosra - Suman Poddar Editorial Showreel" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 pointer-events-none" />
+                  <video id="hero-reel-video" src="/src/assets/video/AjantaReel.mp4" poster="/src/assets/images/suman_kumar.jpg" class="absolute inset-0 w-full h-full object-cover transition-all duration-700" autoplay muted loop playsinline></video>
+                  <img id="hero-reel-img" src="/src/assets/images/FinleBTS/img1.png" alt="tecnosra - Suman Poddar Editorial Showreel" class="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 pointer-events-none" />
                   
                   <!-- Gradient Overlays for High-Contrast Readability -->
                   <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/90 pointer-events-none"></div>
+
+                  <!-- Hero Reel Center Play/Pause Overlay (Invisible when playing) -->
+                  <div class="card-play-overlay absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button id="hero-reel-play-btn" class="pointer-events-auto w-16 h-16 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer opacity-0 pointer-events-none" aria-label="Play or pause hero reel">
+                      <span id="hero-reel-play-icon" class="material-symbols-outlined text-4xl">play_arrow</span>
+                    </button>
+                  </div>
 
                   <!-- Dynamic Island Notch & Top HUD Indicator -->
                   <div class="relative z-10 p-3.5 flex items-center justify-between text-[11px] font-mono text-white">
@@ -309,7 +316,7 @@
                     <!-- Creator Avatar with Follow Badge -->
                     <div class="relative">
                       <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-lg">
-                        <img src="src\assets\images\tsra_techno_logo.png" alt="Suman Poddar" class="w-full h-full object-cover" />
+                        <img src="/src/assets/images/tsra_techno_logo.png" alt="Suman Poddar" class="w-full h-full object-cover" />
                       </div>
                       <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold leading-none shadow">+</span>
                     </div>
@@ -442,7 +449,7 @@
               <!-- Container -->
               <div class="relative rounded-[30px] overflow-hidden border-2 border-outline-variant/60 bg-surface-container shadow-2xl p-2.5">
                 <div class="relative aspect-[3/4] w-full rounded-[22px] overflow-hidden bg-black">
-                  <img src="src\assets\images\FinleBTS\SumanPoddar.png" alt="Suman Poddar - Video Editor, Videographer & Creative Professional" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
+                  <img src="/src/assets/images/FinleBTS/SumanPoddar.png" alt="Suman Poddar - Video Editor, Videographer & Creative Professional" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700" />
                   
                   <!-- Gradient overlay -->
                   <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none"></div>
@@ -563,42 +570,42 @@
         <div class="animate-marquee whitespace-nowrap flex items-center hover:[animation-play-state:paused] py-3">
           <!-- Block 1 -->
           <div class="flex items-center gap-10 sm:gap-14 md:gap-16 px-6 flex-shrink-0">
-            <img src="src\assets\logos\aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\arri.png" alt="ARRI" title="ARRI" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\blender.png" alt="Blender 3D" title="Blender 3D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-1<PASSWORD> transition-all duration-3<PASSWORD> hover:scale-1<PASSWORD> select-none" />
-            <img src="src\assets\logos\dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-9 sm:h-1<PASSWORD> w-auto max-w-[<PASSWORD>] object-contain shrink-<PASSWORD> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\aces_color.png" alt="ACES Color" title="ACES Color" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-1<PASSWORD> transition-all duration-3<PASSWORD> hover:scale-1<PASSWORD> select-none" />
+            <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-9 sm:h-1<PASSWORD> w-auto max-w-[<PASSWORD>] object-contain shrink-<PASSWORD> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
           </div>
 
           <!-- Block 2 (Duplicate for infinite seamless loop) -->
          <div class="flex items-center gap-10 sm:gap-14 md:gap-16 px-6 flex-shrink-0">
-            <img src="src\assets\logos\aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\arri.png" alt="ARRI" title="ARRI" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\blender.png" alt="Blender 3D" title="Blender 3D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
-            <img src="src\assets\logos\cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-1<PASSWORD> transition-all duration-3<PASSWORD> hover:scale-1<PASSWORD> select-none" />
-            <img src="src\assets\logos\dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-9 sm:h-1<PASSWORD> w-auto max-w-[<PASSWORD>] object-contain shrink-<PASSWORD> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\aces_color.png" alt="ACES Color" title="ACES Color" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
-            <img src="src\assets\logos\pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/blackmagic_design.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-100 transition-all duration-300 hover:scale-110 select-none" />
+            <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-9 sm:h-11 w-auto max-w-[130px] object-contain shrink-0 opacity-80 hover:opacity-1<PASSWORD> transition-all duration-3<PASSWORD> hover:scale-1<PASSWORD> select-none" />
+            <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-9 sm:h-1<PASSWORD> w-auto max-w-[<PASSWORD>] object-contain shrink-<PASSWORD> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/boris_fx.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/aces_color.png" alt="ACES Color" title="ACES Color" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
+            <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-9 sm:h-<?php echo $height; ?> w-auto max-w-[<?php echo $max_width; ?>] object-contain shrink-<?php echo $shrink; ?> opacity-<?php echo $opacity; ?> hover:opacity-<?php echo $hover_opacity; ?> transition-all duration-<?php echo $duration; ?> hover:scale-<?php echo $hover_scale; ?> select-none" />
           </div>
         </div>
       </div>
@@ -669,7 +676,7 @@
           <div class="lg:col-span-5 flex items-center justify-center">
             <img 
               id="reels-service-img" 
-              src="src\assets\images\techno_sra_hero.png" 
+              src="/src/assets/images/techno_sra_hero.png" 
               alt="Professional Instagram Reels &amp; Ads Video Editing Services - Techno SRA" 
               class="w-full max-w-[480px] h-auto object-contain select-none" 
               referrerPolicy="no-referrer" 
@@ -691,7 +698,7 @@
           <div class="lg:col-span-5 flex items-center justify-center">
             <img 
               id="youtube-service-img" 
-              src="src\assets\images\suman_kumar.jpg" 
+              src="/src/assets/images/suman_kumar.jpg" 
               alt="Professional YouTube Video Editing Services - Techno SRA" 
               class="w-full max-w-[480px] h-auto object-contain select-none" 
               referrerPolicy="no-referrer" 
@@ -824,7 +831,7 @@
           <div class="lg:col-span-5 flex items-center justify-center">
             <img 
               id="corporate-service-img" 
-              src="src\assets\images\Icon2\creator-based-videos-for-youtube.webp" 
+              src="/src/assets/images/Icon2/creator-based-videos-for-youtube.webp" 
               alt="Corporate, Brand &amp; Event Video Shooting Services - Techno SRA" 
               class="w-full max-w-[480px] h-auto object-contain select-none" 
               referrerPolicy="no-referrer" 
@@ -846,7 +853,7 @@
           <div class="lg:col-span-5 flex items-center justify-center">
             <img 
               id="audience-impact-img" 
-              src="src\assets\images\Icon2\target-audience-assessment.webp" 
+              src="/src/assets/images/Icon2/target-audience-assessment.webp" 
               alt="Reach Your Target Audience with High Impact Video Content - Techno SRA" 
               class="w-full max-w-[480px] h-auto object-contain select-none" 
               referrerPolicy="no-referrer" 
@@ -936,7 +943,7 @@
           <div class="rounded-2xl border border-outline-variant/30 bg-surface-container-lowest/90 backdrop-blur-sm p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 group">
             <div class="w-24 h-24 mb-6 flex items-center justify-center relative">
               <img 
-                src="src\assets\images\Icon2\fill-the-form.webp" 
+                src="/src/assets/images/Icon2/fill-the-form.webp" 
                 alt="Get Started with Your Project - Form details" 
                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md select-none"
               />
@@ -983,7 +990,7 @@
           <div class="rounded-2xl border border-outline-variant/30 bg-surface-container-lowest/90 backdrop-blur-sm p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 group">
             <div class="w-24 h-24 mb-6 flex items-center justify-center relative">
               <img 
-                src="src\assets\images\Icon2\get-a-quote-from-our-agency.webp" 
+                src="/src/assets/images/Icon2/get-a-quote-from-our-agency.webp" 
                 alt="Get Your Free Quote - Project review" 
                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md select-none"
               />
@@ -1034,7 +1041,7 @@
           <div class="rounded-2xl border border-outline-variant/30 bg-surface-container-lowest/90 backdrop-blur-sm p-8 flex flex-col items-center text-center transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 group">
             <div class="w-24 h-24 mb-6 flex items-center justify-center relative">
               <img 
-                src="src\assets\images\Icon2\sky-rocket-your-brand-presence-on-youtube.webp" 
+                src="/src/assets/images/Icon2/sky-rocket-your-brand-presence-on-youtube.webp" 
                 alt="Bring Your Vision to Life - Video execution" 
                 class="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110 drop-shadow-md select-none"
               />
@@ -1350,456 +1357,271 @@
       </div>
     </section>
 
-    <!-- Interactive Color Grade Wiper (Home Screen) -->
-    <section class="py-20 border-b border-outline-variant/20 bg-surface-container-low/50">
-      <div class="w-full max-w-[1640px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
-        
-        <div class="text-center max-w-2xl mx-auto mb-12">
-          <div class="inline-flex items-center gap-2 text-primary font-space text-xs uppercase tracking-widest mb-2">
-            <span class="material-symbols-outlined text-sm">tune</span>
-            Film Science & Color Suite
-          </div>
-          <h2 class="font-syne font-extrabold text-3xl sm:text-4xl text-on-surface uppercase">
-            RAW S-Log3 vs. Finished Emulation
-          </h2>
-          <p class="font-jakarta text-sm text-on-surface-variant mt-2">
-            Drag the vertical divider below to reveal the photochemical density, skin tone separation, and Kodak 2383 print curve.
-          </p>
-        </div>
-
-        <!-- Draggable Wiper Frame -->
-        <div class="relative max-w-5xl mx-auto rounded-2xl overflow-hidden border border-outline/40 shadow-2xl bg-black select-none">
-          
-          <div id="home-wipe-container" class="relative aspect-[16/9] w-full cursor-ew-resize overflow-hidden">
-            
-            <!-- Under Layer: Graded Finished Image -->
-            <img id="home-wipe-graded-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlYwsNQJrntYvf0k9pVNsjwgvZMoUjC1-JBPL_msgRg5rlfKexm5a-elqpJCFp-COoVSZMWmwwrsYjegUJF80Y5_Sup1_jS9zCUMfcYPAG80vte3gNIZsPAu0TJAe1vdNc73EVbfcFJQh4LP4L9RVmPhXXJXsIEyvrSuFYE2oMy94Zldv7KahJEgfuaXYosyMO8hCDnrEGnmLbI-twgNAG-2MYPtuoEY-XmjplXt-weT_0nU0k7-Ft" alt="Finished Film Emulation" class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
-
-            <!-- Over Layer: Flat RAW Log Image (Clipped) -->
-            <div id="home-wipe-log-layer" class="absolute inset-y-0 left-0 overflow-hidden pointer-events-none select-none" style="width: 50%;">
-              <img id="home-wipe-log-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlYwsNQJrntYvf0k9pVNsjwgvZMoUjC1-JBPL_msgRg5rlfKexm5a-elqpJCFp-COoVSZMWmwwrsYjegUJF80Y5_Sup1_jS9zCUMfcYPAG80vte3gNIZsPAu0TJAe1vdNc73EVbfcFJQh4LP4L9RVmPhXXJXsIEyvrSuFYE2oMy94Zldv7KahJEgfuaXYosyMO8hCDnrEGnmLbI-twgNAG-2MYPtuoEY-XmjplXt-weT_0nU0k7-Ft" alt="Flat Log Source" class="absolute inset-y-0 left-0 max-w-none h-full object-cover pointer-events-none" style="filter: saturate(0.22) contrast(0.62) brightness(1.18) sepia(0.06);" />
-              
-              <!-- Badge: FLAT LOG -->
-              <div class="absolute top-4 left-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-on-surface-variant font-mono text-xs border border-outline-variant/40">
-                FLAT LOG SOURCE // EI800
-              </div>
-            </div>
-
-            <!-- Badge: REC 709 GRADE -->
-            <div class="absolute top-4 right-4 px-3 py-1 rounded bg-black/70 backdrop-blur-md text-primary font-mono text-xs border border-primary/40">
-              REC.709 GRADE // KODAK 2383
-            </div>
-
-            <!-- Draggable Handle -->
-            <div id="home-wipe-handle" class="absolute inset-y-0 -translate-x-1/2 flex items-center justify-center pointer-events-none" style="left: 50%;">
-              <div class="w-0.5 h-full bg-primary shadow-[0_0_12px_rgba(255,220,161,0.8)]"></div>
-              <div class="absolute w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-xl border-2 border-surface-container-lowest">
-                <span class="material-symbols-outlined text-lg">sync_alt</span>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- Technical Specs Footer -->
-          <div class="p-4 bg-surface-container border-t border-outline-variant/30 flex flex-wrap items-center justify-between text-xs font-mono text-on-surface-variant gap-3">
-            <div class="flex items-center gap-4">
-              <span>COLOR SPACE: <strong class="text-on-surface">ACEScc (AP0 / AP1)</strong></span>
-              <span class="hidden sm:inline text-outline">|</span>
-              <span class="hidden sm:inline">TRANSFORM: <strong class="text-secondary">ARRI LOG-C4 TO BROADCAST</strong></span>
-            </div>
-            <div class="text-primary font-bold">
-              33-POINT 3D INTERPOLATION MATRIX
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Collaborator Verdicts & Client Feedback with Video Suite -->
-    <section id="client-feedback-section" class="py-20 border-b border-outline-variant/20 bg-surface-container-lowest relative overflow-hidden">
+    <!-- Client Feedback with Video (3D Video Slider) -->
+    <section id="client-feedback-section" class="py-20 border-b border-outline-variant/20 bg-surface-container-lowest relative overflow-hidden select-none">
       <!-- Glow ambient backdrop -->
-      <div class="absolute top-1/2 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
-      <div class="absolute bottom-10 right-0 w-80 h-80 bg-secondary/10 rounded-full blur-[130px] pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-secondary/10 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="w-full max-w-[1640px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
-        <!-- Header & Stats Badge -->
-        <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-primary/30 text-primary font-space text-xs font-bold uppercase tracking-widest mb-3">
-              <span class="material-symbols-outlined text-sm">videocam</span>
-              DIRECTOR'S VERDICTS // RECORDED CLIENT VIDEO REVIEWS
-            </div>
-            <h2 class="font-syne font-extrabold text-3xl sm:text-5xl text-on-surface uppercase">
-              Client Feedback with Video
-            </h2>
-            <p class="font-jakarta text-on-surface-variant text-sm sm:text-base max-w-2xl mt-2">
-              Watch unedited video debriefs, timeline review markers, and post-production verdicts directly from commercial directors and executive producers.
-            </p>
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-surface-container border border-primary/30 text-primary font-space text-xs font-bold uppercase tracking-widest mb-3 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+            <span>VERIFIED DIRECTORS &amp; PRODUCERS</span>
           </div>
-
-          <!-- Trust & Delivery Metrics -->
-          <div class="flex items-center gap-4 p-3 rounded-xl bg-surface-container border border-outline-variant/30 text-xs font-space">
-            <div class="text-center px-3 border-r border-outline-variant/30">
-              <div class="font-syne font-bold text-lg text-primary">100%</div>
-              <div class="text-on-surface-variant text-[10px] uppercase">On-Time Master Delivery</div>
-            </div>
-            <div class="text-center px-3 border-r border-outline-variant/30">
-              <div class="font-syne font-bold text-lg text-secondary">0 Revisions</div>
-              <div class="text-on-surface-variant text-[10px] uppercase">On 65% of Color Passes</div>
-            </div>
-            <div class="text-center px-3">
-              <div class="font-syne font-bold text-lg text-on-surface">5.0 / 5.0</div>
-              <div class="text-on-surface-variant text-[10px] uppercase">Verified Agency Score</div>
-            </div>
-          </div>
+          <h2 class="font-syne font-extrabold text-3xl sm:text-5xl text-on-surface uppercase tracking-tight">
+            Client Feedback with Video
+          </h2>
+          <p class="font-jakarta text-on-surface-variant text-sm sm:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+            Real post-production debriefs and directorial verdicts recorded directly from agency leads and executive producers.
+          </p>
         </div>
 
-        <!-- Main Video Feedback Console -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-12">
+        <!-- 3D Video Slider Stage Wrapper -->
+        <div class="relative w-full max-w-5xl mx-auto px-2 sm:px-8">
           
-          <!-- Left 5 cols: Authentic 9:16 Vertical Reel Player Frame -->
-          <div class="lg:col-span-5 flex flex-col items-center justify-center p-4 sm:p-6 bg-surface-container-low rounded-2xl border border-outline/40 shadow-2xl">
+          <!-- Prev / Next Navigation Arrows -->
+          <button id="slider-3d-prev-btn" class="absolute -left-2 sm:-left-6 top-[220px] sm:top-[240px] -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-surface-container-high/90 hover:bg-primary text-on-surface hover:text-on-primary border border-outline-variant/50 backdrop-blur-md flex items-center justify-center transition-all shadow-xl hover:scale-110 active:scale-95 cursor-pointer" aria-label="Previous Slide">
+            <span class="material-symbols-outlined text-xl sm:text-2xl">arrow_back_ios_new</span>
+          </button>
+          <button id="slider-3d-next-btn" class="absolute -right-2 sm:-right-6 top-[220px] sm:top-[240px] -translate-y-1/2 z-40 w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-surface-container-high/90 hover:bg-primary text-on-surface hover:text-on-primary border border-outline-variant/50 backdrop-blur-md flex items-center justify-center transition-all shadow-xl hover:scale-110 active:scale-95 cursor-pointer" aria-label="Next Slide">
+            <span class="material-symbols-outlined text-xl sm:text-2xl">arrow_forward_ios</span>
+          </button>
+
+          <!-- 3D Carousel Perspective Stage -->
+          <div id="video-slider-3d-container" class="slider-3d-stage relative w-full h-[620px] sm:h-[650px] flex items-center justify-center">
             
-            <!-- Video Reel Smartphone Bezel Frame -->
-            <div class="relative w-full max-w-[310px] sm:max-w-[340px] aspect-[9/16] rounded-[36px] overflow-hidden border-[3px] border-outline-variant/60 bg-black shadow-2xl p-2 flex flex-col justify-between">
-              
-              <!-- Video Player Stage (9:16 Authentic Reel) -->
-              <div id="client-video-container" class="relative aspect-[9/16] w-full h-full rounded-[28px] overflow-hidden bg-black flex flex-col justify-between group select-none">
-                
-                <!-- Real HTML5 Video Element with High Reliability Video Stream -->
-                <video id="client-feedback-video" class="absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" poster="https://lh3.googleusercontent.com/aida-public/AB6AXuBpHGmJXFf6ZAf8Rrt8eZgrHLowU2fXPBYwQWSufBpIIvk8hI0jTgxBAoQ-L6wVy6P8rGlw6Xp5rnd77uZ11GPJ9Elw9Vo4nYrgBm-zP9XuF6R7qBtgGWvVVD4no9KTJBZwI28i8rIGs3MVVhkri-CYIHmn0woeMrek_r8CPP62hIodGcQm4D2B8HlnwZBXvps8xedKfLg5uLiA2JdWXF0l65oWtnWbjuSQz1VA53KTI9vQYKIyiz2g" src="/src/assets/video/Trigotab Reel 9.mp4">
-                  Your browser does not support HTML5 video.
-                </video>
-
-                <!-- Top Bar HUD Overlay inside Reel -->
-                <div class="relative z-20 p-3 bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between text-xs font-mono">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-                    <span id="client-video-badge" class="font-bold text-[10px] text-white truncate max-w-[170px]">WARNER MUSIC • DEBRIEF</span>
-                  </div>
-                  <span id="client-video-timecode" class="text-primary font-bold text-[10px]">00:00:14</span>
-                </div>
-
-                <!-- Central Play Overlay Button -->
-                <div class="absolute inset-0 flex items-center justify-center z-20">
-                  <button id="client-video-play-btn" class="w-16 h-16 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play Client Video Feedback">
-                    <span id="client-video-play-icon" class="material-symbols-outlined text-3xl">play_arrow</span>
-                  </button>
-                </div>
-
-                <!-- Live Audio VU Level Meter Indicator (Pulsing dB bars) -->
-                <div class="absolute top-12 right-3 z-20 flex items-end gap-1 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 font-mono text-[9px] text-secondary pointer-events-none">
-                  <span class="text-[8px] text-on-surface-variant">VU</span>
-                  <div class="w-1 bg-green-400 rounded-sm audio-bar" style="height: 10px;"></div>
-                  <div class="w-1 bg-green-400 rounded-sm audio-bar" style="height: 14px;"></div>
-                  <div class="w-1 bg-yellow-400 rounded-sm audio-bar" style="height: 11px;"></div>
-                  <div class="w-1 bg-primary rounded-sm audio-bar" style="height: 7px;"></div>
-                </div>
-
-                <!-- Live Spoken Transcript Closed-Caption Banner -->
-                <div class="relative z-20 p-3.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent space-y-2">
-                  <div id="client-video-caption" class="px-2.5 py-1 rounded bg-black/85 backdrop-blur-md border border-primary/30 text-white font-jakarta text-xs font-medium shadow-lg line-clamp-2">
-                    "Suman took 14 disjointed camera angles and cut them into pure emotion in 48 hours."
+            <!-- Slide 1: Warner Music -->
+            <div class="slider-3d-card" data-index="0">
+              <div class="card-inner-box">
+                <!-- Video Part (9:16 Vertical Reel) -->
+                <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-2xl border border-outline-variant/40 group">
+                  <video src="/src/assets/video/Trigotab Reel 9.mp4" poster="/src/assets/images/suman_kumar.jpg" class="slider-card-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" loop></video>
+                  
+                  <!-- Top Badge HUD -->
+                  <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-primary font-bold border border-primary/30">WARNER MUSIC</span>
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm">01:45</span>
                   </div>
 
-                  <!-- Scrubber Bar & Controls -->
-                  <div class="space-y-1.5 pt-1 font-mono text-[10px] text-white">
-                    <div class="relative w-full h-1.5 bg-white/20 rounded-full cursor-pointer flex items-center" id="client-scrubber-track">
-                      <div id="client-video-progress" class="h-full bg-primary rounded-full" style="width: 28%;"></div>
+                  <!-- Play/Pause Button Overlay -->
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button class="slider-video-play-btn pointer-events-auto w-14 h-14 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play video">
+                      <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Client Feedback Directly Below Video -->
+                <div class="client-feedback-box mt-3 p-4 rounded-xl bg-surface-container/95 border border-outline-variant/40 backdrop-blur-md shadow-lg space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-amber-400">
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
                     </div>
-                    <div class="flex items-center justify-between text-[9px] text-white/80">
-                      <span id="client-video-time-display">00:14 / 01:45</span>
-                      <div class="flex items-center gap-2">
-                        <button id="client-play-toggle-btn" class="hover:text-primary transition-colors cursor-pointer">
-                          <span id="client-small-play-icon" class="material-symbols-outlined text-sm">play_arrow</span>
-                        </button>
-                        <button id="client-video-mute-btn" class="hover:text-primary transition-colors cursor-pointer" title="Toggle Audio">
-                          <span id="client-video-mute-icon" class="material-symbols-outlined text-sm">volume_up</span>
-                        </button>
-                        <button id="client-fullscreen-btn" class="hover:text-primary transition-colors cursor-pointer" title="Full Screen">
-                          <span class="material-symbols-outlined text-sm">fullscreen</span>
-                        </button>
-                      </div>
+                    <span class="text-[10px] font-mono text-secondary font-bold uppercase">Golden Echoes Cut</span>
+                  </div>
+                  <blockquote class="font-jakarta text-xs sm:text-sm text-on-surface italic leading-snug line-clamp-3">
+                    "Suman extracted raw emotional adrenaline under an impossible 48-hour turnaround. The 14-camera live sync was pure perfection."
+                  </blockquote>
+                  <div class="pt-2 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-primary/50 shrink-0">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuClzy_GGkTzTR0Y4BK2wu6EHlJQYpCV9JaKVqC0HNzJvMNz2Bhsf8xSsweR-Kxtu9SJvxXwNlIgwjzOgsHNE-HXOXREWdASeex6R1BInHknH5EqI3PJwjIpg6ezpFR083yIAXFs2nINUsYXKiewAtNxRkK3NnC0C0UJMGzapx-zFRsRwl8NLJsxRmqt2jmSGuh_g0bucifp9lrwdX_B2LI6iGK61OqVE2DAPI39ayAiUPb5QbDFSAmk" alt="Julian Vance" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-syne font-bold text-xs text-on-surface truncate">Julian Vance</div>
+                      <div class="font-space text-[10px] text-on-surface-variant truncate">Creative Director • Warner Music</div>
                     </div>
                   </div>
                 </div>
 
               </div>
-
             </div>
 
-          </div>
-
-          <!-- Right 7 cols: Active Client Testimonial & Project Outcomes -->
-          <div class="lg:col-span-7 flex flex-col justify-between rounded-2xl border border-outline/30 bg-surface-container p-6 sm:p-8 space-y-6">
-            
-            <div class="space-y-4">
-              <!-- Client Head & Company Badge -->
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-3.5">
-                  <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/50 shrink-0">
-                    <img id="active-client-avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClzy_GGkTzTR0Y4BK2wu6EHlJQYpCV9JaKVqC0HNzJvMNz2Bhsf8xSsweR-Kxtu9SJvxXwNlIgwjzOgsHNE-HXOXREWdASeex6R1BInHknH5EqI3PJwjIpg6ezpFR083yIAXFs2nINUsYXKiewAtNxRkK3NnC0C0UJMGzapx-zFRsRwl8NLJsxRmqt2jmSGuh_g0bucifp9lrwdX_B2LI6iGK61OqVE2DAPI39ayAiUPb5QbDFSAmk" alt="Julian Vance" class="w-full h-full object-cover" />
+            <!-- Slide 2: Nike Global -->
+            <div class="slider-3d-card" data-index="1">
+              <div class="card-inner-box">
+                <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-2xl border border-outline-variant/40 group">
+                  <video src="/src/assets/video/Tsh Media Reel 1.mp4" poster="/src/assets/images/technosra_banner.jpg" class="slider-card-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" loop></video>
+                  <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-secondary font-bold border border-secondary/30">NIKE GLOBAL</span>
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm">02:10</span>
                   </div>
-                  <div>
-                    <h3 id="active-client-name" class="font-syne font-bold text-lg text-on-surface">Julian Vance</h3>
-                    <div id="active-client-role" class="font-space text-xs text-on-surface-variant">Creative Director • Warner Music Group</div>
-                    <div id="active-client-company" class="font-space text-[11px] text-primary font-bold uppercase mt-0.5">WARNER MUSIC RECORDINGS</div>
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button class="slider-video-play-btn pointer-events-auto w-14 h-14 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play video">
+                      <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                    </button>
                   </div>
                 </div>
-
-                <div class="flex items-center text-primary bg-surface-container-high px-2.5 py-1 rounded-full border border-primary/20">
-                  <span class="material-symbols-outlined text-sm">star</span>
-                  <span class="material-symbols-outlined text-sm">star</span>
-                  <span class="material-symbols-outlined text-sm">star</span>
-                  <span class="material-symbols-outlined text-sm">star</span>
-                  <span class="material-symbols-outlined text-sm">star</span>
-                </div>
-              </div>
-
-              <!-- Spoken Soundbite Highlight -->
-              <blockquote id="active-client-quote" class="font-syne text-xl sm:text-2xl text-on-surface font-semibold leading-snug pt-2">
-                "Suman doesn't just trim shots—he extracts emotional adrenaline. He cut our flagship concert film under impossible deadlines, delivering a master that won Best of the Year."
-              </blockquote>
-
-              <!-- Project Impact Badges -->
-              <div class="grid grid-cols-2 gap-3 pt-3 border-t border-outline-variant/30 font-space text-xs">
-                <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
-                  <div class="text-[10px] text-on-surface-variant uppercase">Project Delivered</div>
-                  <div id="active-client-project" class="font-bold text-on-surface mt-0.5">Golden Echoes Arena Cut</div>
-                </div>
-                <div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
-                  <div class="text-[10px] text-on-surface-variant uppercase">Key Outcome</div>
-                  <div id="active-client-outcome" class="font-bold text-secondary mt-0.5">MTV VMA Nominee 2024</div>
-                </div>
-              </div>
-
-              <!-- Interactive Timeline Soundbite Chapters -->
-              <div class="space-y-2 pt-2">
-                <div class="font-space text-[11px] uppercase tracking-wider text-primary font-bold">Key Chapters in Video Debrief</div>
-                <div id="active-client-chapters" class="space-y-1.5 font-space text-xs">
-                  <button class="client-chapter-jump w-full text-left px-3 py-2 rounded bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/20 flex items-center justify-between transition-colors group" data-time="14">
-                    <span class="text-on-surface group-hover:text-primary">00:14 • The first rough cut had zero revisions</span>
-                    <span class="material-symbols-outlined text-sm text-primary">play_circle</span>
-                  </button>
-                  <button class="client-chapter-jump w-full text-left px-3 py-2 rounded bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/20 flex items-center justify-between transition-colors group" data-time="42">
-                    <span class="text-on-surface group-hover:text-primary">00:42 • 14-camera live sync & rhythmic drum cuts</span>
-                    <span class="material-symbols-outlined text-sm text-primary">play_circle</span>
-                  </button>
-                  <button class="client-chapter-jump w-full text-left px-3 py-2 rounded bg-surface-container-low hover:bg-surface-container-high border border-outline-variant/20 flex items-center justify-between transition-colors group" data-time="78">
-                    <span class="text-on-surface group-hover:text-primary">01:18 • Delivering the final DCI 4K master in 48h</span>
-                    <span class="material-symbols-outlined text-sm text-primary">play_circle</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Direct Action Triggers -->
-            <div class="pt-4 border-t border-outline-variant/30 flex flex-wrap items-center gap-3">
-              <button id="screen-master-cut-btn" data-title="Golden Echoes: Live at Royale" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBpHGmJXFf6ZAf8Rrt8eZgrHLowU2fXPBYwQWSufBpIIvk8hI0jTgxBAoQ-L6wVy6P8rGlw6Xp5rnd77uZ11GPJ9Elw9Vo4nYrgBm-zP9XuF6R7qBtgGWvVVD4no9KTJBZwI28i8rIGs3MVVhkri-CYIHmn0woeMrek_r8CPP62hIodGcQm4D2B8HlnwZBXvps8xedKfLg5uLiA2JdWXF0l65oWtnWbjuSQz1VA53KTI9vQYKIyiz2g" class="open-modal-trigger flex-1 py-3 px-4 rounded bg-primary-container text-on-primary font-space font-bold text-xs uppercase tracking-wider hover:bg-primary-fixed-dim transition-all shadow-md flex items-center justify-center gap-2">
-                <span class="material-symbols-outlined text-sm">movie</span>
-                <span>Screen Project Master Cut</span>
-              </button>
-              <a href="/contact.html" data-path="contact" class="py-3 px-4 rounded bg-surface-container-low border border-outline-variant/40 text-on-surface font-space font-bold text-xs uppercase tracking-wider hover:border-primary hover:text-primary transition-all flex items-center justify-center">
-                Book Suite
-              </a>
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- 5 Selectable Client Video Cards Strip & Custom Video Adder -->
-        <div class="space-y-4">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <span class="font-space text-xs font-bold uppercase tracking-wider text-on-surface-variant">SELECT RECORDED CLIENT DEBRIEF (5 AVAILABLE)</span>
-              <span class="ml-2 font-mono text-xs text-secondary hidden sm:inline">• CLICK ANY CARD TO LOAD &amp; PLAY</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <input type="file" id="client-video-file-input" accept="video/mp4,video/webm,video/quicktime,video/*" class="hidden" />
-              <button id="add-client-video-btn" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary hover:bg-primary-fixed-dim font-space font-bold text-xs uppercase tracking-wider transition-all shadow-md cursor-pointer">
-                <span class="material-symbols-outlined text-sm">video_call</span>
-                <span>Select &amp; Add Video</span>
-              </button>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" id="client-cards-grid">
-            
-            <!-- Client 1: Warner Music (Active by Default) -->
-            <div class="client-select-card active p-3 rounded-xl bg-surface-container border-2 border-primary ring-2 ring-primary/30 cursor-pointer transition-all hover:bg-surface-container-high space-y-3 group" data-client-id="warner" data-video-src="/src/assets/video/Trigotab Reel 9.mp4">
-              <div class="relative aspect-[9/16] rounded-lg overflow-hidden bg-black">
-                <video src="/src/assets/video/Trigotab Reel 9.mp4" class="card-preview-video absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" playsinline muted loop preload="metadata"></video>
-                <div class="card-play-overlay absolute inset-0 bg-black/35 group-hover:bg-black/15 flex items-center justify-center transition-all pointer-events-none">
-                  <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                    <span class="card-play-icon material-symbols-outlined text-2xl">pause</span>
+                <div class="client-feedback-box mt-3 p-4 rounded-xl bg-surface-container/95 border border-outline-variant/40 backdrop-blur-md shadow-lg space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-amber-400">
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-secondary font-bold uppercase">42M Impressions</span>
+                  </div>
+                  <blockquote class="font-jakarta text-xs sm:text-sm text-on-surface italic leading-snug line-clamp-3">
+                    "The kinetic speed ramping choreography and audio design scaled our campaign to 42M impressions with zero revisions."
+                  </blockquote>
+                  <div class="pt-2 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-secondary/50 shrink-0">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxcW-fZPnjAWh_2wCCEJmb-Zin00p10GqmSU6YoCZJlspyXELQfaDOZo12i0xuJOhJqhmMATDQr-JxZqFtRrw7wCVZkGhh7x7eYn1tIgz6f50GNM7HaJLsMgkucd8aazIwGf81azTh1_kLbB-R_yOXQJgnCRFT7MWsLFQ_vibuKxICqJUZJTg-h7O_DrBhPZk7HTe_U759jeiQoiDJFPQe12N2hg0NJ0JMlr5B9n5ZfEkakfHQDo_m" alt="Elena Rostova" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-syne font-bold text-xs text-on-surface truncate">Elena Rostova</div>
+                      <div class="font-space text-[10px] text-on-surface-variant truncate">Head of Digital • Nike EMEA</div>
+                    </div>
                   </div>
                 </div>
-                <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/75 text-primary font-mono text-[9px] font-bold pointer-events-none z-10 flex items-center gap-1.5">
-                  <span class="card-status-dot w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-                  <span>WARNER MUSIC</span>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-on-surface font-mono text-[9px] pointer-events-none z-10">01:45</div>
               </div>
-              <div>
-                <div class="font-syne font-bold text-sm text-on-surface flex items-center justify-between">
-                  <span>Julian Vance</span>
-                  <span class="card-active-tag text-[9px] font-mono text-primary font-bold">ACTIVE</span>
+            </div>
+
+            <!-- Slide 3: Red Bull Media -->
+            <div class="slider-3d-card" data-index="2">
+              <div class="card-inner-box">
+                <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-2xl border border-outline-variant/40 group">
+                  <video src="/src/assets/video/Yashoda Mam.mp4" poster="/src/assets/images/technosra_hero_banner_1789485139102.jpg" class="slider-card-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" loop></video>
+                  <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-primary font-bold border border-primary/30">RED BULL MEDIA</span>
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm">01:52</span>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button class="slider-video-play-btn pointer-events-auto w-14 h-14 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play video">
+                      <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                    </button>
+                  </div>
                 </div>
-                <div class="font-space text-[11px] text-on-surface-variant">Creative Director</div>
-                <p class="font-jakarta text-xs text-on-surface-variant line-clamp-2 mt-1">"Suman extracts emotional adrenaline under impossible deadlines."</p>
-                <div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-primary font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">play_circle</span> Click to Play
-                  </span>
-                  <label class="change-card-video-label cursor-pointer text-[10px] font-mono text-on-surface-variant hover:text-primary flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high hover:bg-primary/20 transition-colors" title="Select custom video for this card">
-                    <span class="material-symbols-outlined text-xs">upload</span> Replace
-                    <input type="file" class="card-custom-video-input hidden" accept="video/*" />
-                  </label>
+                <div class="client-feedback-box mt-3 p-4 rounded-xl bg-surface-container/95 border border-outline-variant/40 backdrop-blur-md shadow-lg space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-amber-400">
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-primary font-bold uppercase">BANFF 2024 Winner</span>
+                  </div>
+                  <blockquote class="font-jakarta text-xs sm:text-sm text-on-surface italic leading-snug line-clamp-3">
+                    "Suman knows exactly when to hold on a summit and when to cut rapidly on a downhill jump. Unrivaled pacing and audio precision."
+                  </blockquote>
+                  <div class="pt-2 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-primary/50 shrink-0">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcr_fzolGYyODN-7nJdWfRZuR2i43J2vRjEENtjUy7Ez9f5j7h5fkE2xTjE2B1kyc3Od0qYM7sIhvaVX4xgSNOt-AFCypV3H3tv3_NaE3bnXdg2br9Umftwy9s-5TddDeMpo1nBJTp-Iy-sVwV17aJfg7imPsaHLKgkeLxkbEwGOFk85WTsak3pkNTLbh8bervOQhPSklB5J6_0Cdltsy5liOjkipGyM4OkmM7J8iph5pHFwWe5WLs" alt="Marcus Sterling" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-syne font-bold text-xs text-on-surface truncate">Marcus Sterling</div>
+                      <div class="font-space text-[10px] text-on-surface-variant truncate">Exec Producer • Red Bull Media</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Client 2: Nike Global -->
-            <div class="client-select-card p-3 rounded-xl bg-surface-container border border-outline-variant/30 cursor-pointer transition-all hover:border-primary/60 hover:bg-surface-container-high space-y-3 group" data-client-id="nike" data-video-src="/src/assets/video/Tsh Media Reel 1.mp4">
-              <div class="relative aspect-[9/16] rounded-lg overflow-hidden bg-black">
-                <video src="/src/assets/video/Tsh Media Reel 1.mp4" class="card-preview-video absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" playsinline muted loop preload="metadata"></video>
-                <div class="card-play-overlay absolute inset-0 bg-black/35 group-hover:bg-black/15 flex items-center justify-center transition-all pointer-events-none">
-                  <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                    <span class="card-play-icon material-symbols-outlined text-2xl">play_arrow</span>
+            <!-- Slide 4: Universal Music -->
+            <div class="slider-3d-card" data-index="3">
+              <div class="card-inner-box">
+                <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-2xl border border-outline-variant/40 group">
+                  <video src="/src/assets/video/PB-Surbhi.mp4" poster="/src/assets/images/kinetic_stage_light_1789894435176.jpg" class="slider-card-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" loop></video>
+                  <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-secondary font-bold border border-secondary/30">UNIVERSAL MUSIC</span>
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm">01:38</span>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button class="slider-video-play-btn pointer-events-auto w-14 h-14 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play video">
+                      <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                    </button>
                   </div>
                 </div>
-                <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/75 text-secondary font-mono text-[9px] font-bold pointer-events-none z-10 flex items-center gap-1.5">
-                  <span class="card-status-dot w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  <span>NIKE GLOBAL</span>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-on-surface font-mono text-[9px] pointer-events-none z-10">02:10</div>
-              </div>
-              <div>
-                <div class="font-syne font-bold text-sm text-on-surface flex items-center justify-between">
-                  <span>Elena Rostova</span>
-                  <span class="card-active-tag hidden text-[9px] font-mono text-primary font-bold">ACTIVE</span>
-                </div>
-                <div class="font-space text-[11px] text-on-surface-variant">Head of Digital Content</div>
-                <p class="font-jakarta text-xs text-on-surface-variant line-clamp-2 mt-1">"The kinetic pacing turned standard footage into 42M impressions."</p>
-                <div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-primary font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">play_circle</span> Click to Play
-                  </span>
-                  <label class="change-card-video-label cursor-pointer text-[10px] font-mono text-on-surface-variant hover:text-primary flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high hover:bg-primary/20 transition-colors" title="Select custom video for this card">
-                    <span class="material-symbols-outlined text-xs">upload</span> Replace
-                    <input type="file" class="card-custom-video-input hidden" accept="video/*" />
-                  </label>
+                <div class="client-feedback-box mt-3 p-4 rounded-xl bg-surface-container/95 border border-outline-variant/40 backdrop-blur-md shadow-lg space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-amber-400">
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-secondary font-bold uppercase">Rolling Stone MV</span>
+                  </div>
+                  <blockquote class="font-jakarta text-xs sm:text-sm text-on-surface italic leading-snug line-clamp-3">
+                    "Our artist was overwhelmed watching the first rough cut. Suman didn't just assemble clips; he built cinematic poetry."
+                  </blockquote>
+                  <div class="pt-2 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-secondary/50 shrink-0">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlYwsNQJrntYvf0k9pVNsjwgvZMoUjC1-JBPL_msgRg5rlfKexm5a-elqpJCFp-COoVSZMWmwwrsYjegUJF80Y5_Sup1_jS9zCUMfcYPAG80vte3gNIZsPAu0TJAe1vdNc73EVbfcFJQh4LP4L9RVmPhXXJXsIEyvrSuFYE2oMy94Zldv7KahJEgfuaXYosyMO8hCDnrEGnmLbI-twgNAG-2MYPtuoEY-XmjplXt-weT_0nU0k7-Ft" alt="Sophia Cho" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-syne font-bold text-xs text-on-surface truncate">Sophia Cho</div>
+                      <div class="font-space text-[10px] text-on-surface-variant truncate">A&amp;R Visual Director • Universal</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Client 3: Red Bull Media -->
-            <div class="client-select-card p-3 rounded-xl bg-surface-container border border-outline-variant/30 cursor-pointer transition-all hover:border-primary/60 hover:bg-surface-container-high space-y-3 group" data-client-id="redbull" data-video-src="/src/assets/video/Yashoda Mam.mp4">
-              <div class="relative aspect-[9/16] rounded-lg overflow-hidden bg-black">
-                <video src="/src/assets/video/Yashoda Mam.mp4" class="card-preview-video absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" playsinline muted loop preload="metadata"></video>
-                <div class="card-play-overlay absolute inset-0 bg-black/35 group-hover:bg-black/15 flex items-center justify-center transition-all pointer-events-none">
-                  <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                    <span class="card-play-icon material-symbols-outlined text-2xl">play_arrow</span>
+            <!-- Slide 5: Nissan Motor Co. -->
+            <div class="slider-3d-card" data-index="4">
+              <div class="card-inner-box">
+                <div class="relative w-full aspect-[9/16] rounded-2xl overflow-hidden bg-black shadow-2xl border border-outline-variant/40 group">
+                  <video src="/src/assets/video/TCDReel.mp4" poster="/src/assets/images/volcanic_black_matrix_1788806061665.jpg" class="slider-card-video absolute inset-0 w-full h-full object-cover" playsinline preload="metadata" loop></video>
+                  <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between text-[10px] font-mono text-white pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm text-primary font-bold border border-primary/30">NISSAN GLOBAL</span>
+                    <span class="px-2 py-0.5 rounded bg-black/75 backdrop-blur-sm">02:24</span>
+                  </div>
+                  <div class="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                    <button class="slider-video-play-btn pointer-events-auto w-14 h-14 rounded-full bg-primary/95 text-on-primary flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-2xl cursor-pointer" aria-label="Play video">
+                      <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                    </button>
                   </div>
                 </div>
-                <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/75 text-primary font-mono text-[9px] font-bold pointer-events-none z-10 flex items-center gap-1.5">
-                  <span class="card-status-dot w-1.5 h-1.5 rounded-full bg-primary"></span>
-                  <span>RED BULL MEDIA</span>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-on-surface font-mono text-[9px] pointer-events-none z-10">01:52</div>
-              </div>
-              <div>
-                <div class="font-syne font-bold text-sm text-on-surface flex items-center justify-between">
-                  <span>Marcus Sterling</span>
-                  <span class="card-active-tag hidden text-[9px] font-mono text-primary font-bold">ACTIVE</span>
-                </div>
-                <div class="font-space text-[11px] text-on-surface-variant">Executive Producer</div>
-                <p class="font-jakarta text-xs text-on-surface-variant line-clamp-2 mt-1">"Flawless handling of 120fps drone footage and multi-layer sound stems."</p>
-                <div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-primary font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">play_circle</span> Click to Play
-                  </span>
-                  <label class="change-card-video-label cursor-pointer text-[10px] font-mono text-on-surface-variant hover:text-primary flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high hover:bg-primary/20 transition-colors" title="Select custom video for this card">
-                    <span class="material-symbols-outlined text-xs">upload</span> Replace
-                    <input type="file" class="card-custom-video-input hidden" accept="video/*" />
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Client 4: Universal Music -->
-            <div class="client-select-card p-3 rounded-xl bg-surface-container border border-outline-variant/30 cursor-pointer transition-all hover:border-primary/60 hover:bg-surface-container-high space-y-3 group" data-client-id="universal" data-video-src="/src/assets/video/PB-Surbhi.mp4">
-              <div class="relative aspect-[9/16] rounded-lg overflow-hidden bg-black">
-                <video src="/src/assets/video/PB-Surbhi.mp4" class="card-preview-video absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" playsinline muted loop preload="metadata"></video>
-                <div class="card-play-overlay absolute inset-0 bg-black/35 group-hover:bg-black/15 flex items-center justify-center transition-all pointer-events-none">
-                  <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                    <span class="card-play-icon material-symbols-outlined text-2xl">play_arrow</span>
+                <div class="client-feedback-box mt-3 p-4 rounded-xl bg-surface-container/95 border border-outline-variant/40 backdrop-blur-md shadow-lg space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center text-amber-400">
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                      <span class="material-symbols-outlined text-sm">star</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-primary font-bold uppercase">Clio Awards Finalist</span>
                   </div>
-                </div>
-                <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/75 text-secondary font-mono text-[9px] font-bold pointer-events-none z-10 flex items-center gap-1.5">
-                  <span class="card-status-dot w-1.5 h-1.5 rounded-full bg-secondary"></span>
-                  <span>UNIVERSAL MUSIC</span>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-on-surface font-mono text-[9px] pointer-events-none z-10">01:38</div>
-              </div>
-              <div>
-                <div class="font-syne font-bold text-sm text-on-surface flex items-center justify-between">
-                  <span>Sophia Cho</span>
-                  <span class="card-active-tag hidden text-[9px] font-mono text-primary font-bold">ACTIVE</span>
-                </div>
-                <div class="font-space text-[11px] text-on-surface-variant">A&R Visual Director</div>
-                <p class="font-jakarta text-xs text-on-surface-variant line-clamp-2 mt-1">"The Kodak 2383 color grade got approved on first pass without a single fix."</p>
-                <div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-primary font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">play_circle</span> Click to Play
-                  </span>
-                  <label class="change-card-video-label cursor-pointer text-[10px] font-mono text-on-surface-variant hover:text-primary flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high hover:bg-primary/20 transition-colors" title="Select custom video for this card">
-                    <span class="material-symbols-outlined text-xs">upload</span> Replace
-                    <input type="file" class="card-custom-video-input hidden" accept="video/*" />
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <!-- Client 5: Nissan Motor Co. -->
-            <div class="client-select-card p-3 rounded-xl bg-surface-container border border-outline-variant/30 cursor-pointer transition-all hover:border-primary/60 hover:bg-surface-container-high space-y-3 group" data-client-id="nissan" data-video-src="/src/assets/video/TCDReel.mp4">
-              <div class="relative aspect-[9/16] rounded-lg overflow-hidden bg-black">
-                <video src="/src/assets/video/TCDReel.mp4" class="card-preview-video absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none" playsinline muted loop preload="metadata"></video>
-                <div class="card-play-overlay absolute inset-0 bg-black/35 group-hover:bg-black/15 flex items-center justify-center transition-all pointer-events-none">
-                  <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
-                    <span class="card-play-icon material-symbols-outlined text-2xl">play_arrow</span>
+                  <blockquote class="font-jakarta text-xs sm:text-sm text-on-surface italic leading-snug line-clamp-3">
+                    "Suman captured the raw adrenaline of GT-R nighttime drift with surgical precision. Pacing locked perfectly to telemetry."
+                  </blockquote>
+                  <div class="pt-2 border-t border-outline-variant/20 flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-primary/50 shrink-0">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSyALOg6EAXnoVRMDu0mGkkE_V45PLonx3J0DmLojsndtz4B04pqP4dZ32Xfv9CHGOhs8wlgAdOqlxbeiD7ogVVv7DByzSMJ2rkVP-NmCBfagBQBZklk_HGiXweI4yjsPC_BZT4ELW7lH3O0xzKJ9iDPefKTTu4zYmHVa_XBxZ_AL-MewiP81Poi8HRVDKerD8f4cNEMu8AiHKkRRl6iOBeGmWq4cp_e5kOruN7GlP6VQlAl5Q9c7L" alt="Kenji Takahashi" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="min-w-0">
+                      <div class="font-syne font-bold text-xs text-on-surface truncate">Kenji Takahashi</div>
+                      <div class="font-space text-[10px] text-on-surface-variant truncate">Brand Comms • Nissan Motor Co.</div>
+                    </div>
                   </div>
-                </div>
-                <div class="absolute top-2 left-2 px-1.5 py-0.5 rounded bg-black/75 text-primary font-mono text-[9px] font-bold pointer-events-none z-10 flex items-center gap-1.5">
-                  <span class="card-status-dot w-1.5 h-1.5 rounded-full bg-primary"></span>
-                  <span>NISSAN MOTOR CO.</span>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/75 text-on-surface font-mono text-[9px] pointer-events-none z-10">02:24</div>
-              </div>
-              <div>
-                <div class="font-syne font-bold text-sm text-on-surface flex items-center justify-between">
-                  <span>Kenji Takahashi</span>
-                  <span class="card-active-tag hidden text-[9px] font-mono text-primary font-bold">ACTIVE</span>
-                </div>
-                <div class="font-space text-[11px] text-on-surface-variant">Brand Communications Lead</div>
-                <p class="font-jakarta text-xs text-on-surface-variant line-clamp-2 mt-1">"Captured the raw adrenaline of GT-R nighttime drift with surgical precision."</p>
-                <div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between">
-                  <span class="text-[10px] font-mono text-primary font-semibold flex items-center gap-1">
-                    <span class="material-symbols-outlined text-xs">play_circle</span> Click to Play
-                  </span>
-                  <label class="change-card-video-label cursor-pointer text-[10px] font-mono text-on-surface-variant hover:text-primary flex items-center gap-1 px-1.5 py-0.5 rounded bg-surface-container-high hover:bg-primary/20 transition-colors" title="Select custom video for this card">
-                    <span class="material-symbols-outlined text-xs">upload</span> Replace
-                    <input type="file" class="card-custom-video-input hidden" accept="video/*" />
-                  </label>
                 </div>
               </div>
             </div>
 
           </div>
+
+          <!-- Pagination Indicator Dots -->
+          <div id="slider-3d-dots" class="flex items-center justify-center gap-2 mt-6">
+            <button class="slider-dot w-8 h-2 rounded-full bg-primary transition-all cursor-pointer" data-index="0" aria-label="Go to slide 1"></button>
+            <button class="slider-dot w-2 h-2 rounded-full bg-outline-variant/60 hover:bg-primary/50 transition-all cursor-pointer" data-index="1" aria-label="Go to slide 2"></button>
+            <button class="slider-dot w-2 h-2 rounded-full bg-outline-variant/60 hover:bg-primary/50 transition-all cursor-pointer" data-index="2" aria-label="Go to slide 3"></button>
+            <button class="slider-dot w-2 h-2 rounded-full bg-outline-variant/60 hover:bg-primary/50 transition-all cursor-pointer" data-index="3" aria-label="Go to slide 4"></button>
+            <button class="slider-dot w-2 h-2 rounded-full bg-outline-variant/60 hover:bg-primary/50 transition-all cursor-pointer" data-index="4" aria-label="Go to slide 5"></button>
+          </div>
+
         </div>
 
       </div>
@@ -1920,7 +1742,7 @@
         <div>
           <span id="dossier-category" class="px-2.5 py-1 rounded bg-primary/20 text-primary font-mono text-xs font-bold uppercase">COMMERCIAL AUTO</span>
           <h2 id="dossier-title" class="font-syne font-bold text-2xl sm:text-3xl text-on-surface mt-2">Nissan GT-R: Midnight Protocol</h2>
-          <div id="dossier-client" class="font-mono text-xs text-secondary mt-1">Client: Nissan Motor Corporation // Agency: TBWA\Chiat\Day</div>
+          <div id="dossier-client" class="font-mono text-xs text-secondary mt-1">Client: Nissan Motor Corporation // Agency: TBWA / Chiat / Day</div>
         </div>
         <button id="close-dossier-modal" class="p-1 rounded text-on-surface hover:text-primary transition-colors">
           <span class="material-symbols-outlined">close</span>
@@ -1988,38 +1810,38 @@
       <div class="animate-marquee whitespace-nowrap flex items-center hover:[animation-play-state:paused]">
         <!-- Block 1 -->
         <div class="flex items-center gap-8 sm:gap-12 md:gap-14 px-6 flex-shrink-0">
-          <img src="src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\aces_color.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/red_cinema.png" alt="RED Digital Cinema" title="RED Digital Cinema" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/aces_color.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
         </div>
 
         <!-- Block 2 (Duplicate for infinite seamless loop) -->
         <div class="flex items-center gap-8 sm:gap-12 md:gap-14 px-6 flex-shrink-0">
-          <img src="src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\red_cinema.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\aces_color.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
-          <img src="src\assets\logos\pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/aces_color.png" alt="DaVinci Resolve" title="DaVinci Resolve" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/premiere_pro.png" alt="Adobe Premiere Pro" title="Adobe Premiere Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/after_effects.png" alt="Adobe After Effects" title="Adobe After Effects" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/techno_sra.png" alt="Techno SRA" title="Techno SRA" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/final_cut_pro.png" alt="Apple Final Cut Pro" title="Apple Final Cut Pro" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/red_cinema.png" alt="Blackmagic Design" title="Blackmagic Design" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/arri.png" alt="ARRI" title="ARRI" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/avid.png" alt="Avid Media Composer" title="Avid Media Composer" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/blender.png" alt="Blender 3D" title="Blender 3D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/cinema_4d.png" alt="Cinema 4D" title="Cinema 4D" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/sony_cine.png" alt="Sony CineAlta" title="Sony CineAlta" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/dolby_atmos.png" alt="Dolby Atmos" title="Dolby Atmos" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/aces_color.png" alt="Boris FX Mocha" title="Boris FX Mocha" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
+          <img src="/src/assets/logos/pro_tools.png" alt="Avid Pro Tools" title="Avid Pro Tools" class="h-10 sm:h-12 w-auto max-w-[120px] object-contain shrink-0 transition-all duration-300 hover:scale-110 hover:brightness-110 select-none" />
         </div>
       </div>
     </div>
@@ -2030,7 +1852,7 @@
         
         <div class="md:col-span-5 space-y-4">
           <div class="flex items-center gap-3">
-            <img src="src\assets\images\tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-10 h-10 object-contain" />
+            <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-10 h-10 object-contain" />
             <span class="font-syne font-bold text-base text-on-surface uppercase">Techno SRA • Suman Poddar</span>
           </div>
           <p class="font-jakarta text-xs text-on-surface-variant max-w-sm leading-relaxed">
@@ -2059,38 +1881,52 @@
         <div class="md:col-span-3 space-y-3">
           <div class="font-space text-xs uppercase tracking-wider text-primary font-bold">Transmissions / Social</div>
           <div class="flex flex-col space-y-2 font-space text-xs text-on-surface-variant">
-            <a href="https://facebook.com/tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="mailto:technosra26@gmail.com" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 fill-current text-blue-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                <span>Facebook (FB)</span>
+                <span class="material-symbols-outlined text-[15px] text-primary shrink-0">mail</span>
+                <span>Gmail</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://instagram.com/tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://www.instagram.com/invites/contact/?utm_content=jnn9een&stkn=ytkot12qek7b" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-pink-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>Instagram @tecnosra</span>
+                <span>Instagram</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://www.upwork.com" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
-              <span class="flex items-center gap-2">
-                <svg class="w-3.5 h-3.5 fill-current text-emerald-400 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
-                <span>Freelancing (Upwork / Fiverr)</span>
-              </span>
-              <span class="material-symbols-outlined text-xs">arrow_outward</span>
-            </a>
-            <a href="https://youtube.com/@tecnosra" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://youtube.com/@technosra?si=TgkENsNog_GrDwuq" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-red-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                <span>YouTube (YT) Channel</span>
+                <span>YouTube</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>
-            <a href="https://linkedin.com/in/sumanpoddar" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+            <a href="https://www.linkedin.com/in/suman-poddar-4772aa270?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
               <span class="flex items-center gap-2">
                 <svg class="w-3.5 h-3.5 fill-current text-sky-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 <span>LinkedIn</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://www.behance.net/sumankumar381" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-blue-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.084 0-5.625-3.003-5.625-5.992 0-3.568 2.067-6.008 5.625-6.008 4.095 0 5.375 3.197 5.375 6.008 0 .428-.029.843-.09 1.246h-8.08c.088 1.83 1.157 2.923 2.924 2.923 1.345 0 2.235-.583 2.659-1.177h2.313zm-7.896-3.834h5.271c-.085-1.517-.92-2.343-2.585-2.343-1.611 0-2.551.843-2.686 2.343zm-7.83-8.166h-8v14h7.525c3.272 0 5.475-1.583 5.475-4.475 0-1.895-1.077-3.238-2.687-3.791 1.258-.616 2.087-1.808 2.087-3.334 0-2.613-2.072-2.4-4.4-2.4zm-5 2.5h2.247c1.378 0 2.253.518 2.253 1.637 0 1.16-.92 1.704-2.348 1.704h-2.152v-3.341zm0 5.341h2.558c1.554 0 2.517.65 2.517 1.954 0 1.353-.984 2.046-2.568 2.046h-2.507v-4z"/></svg>
+                <span>Behance</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://www.facebook.com/share/14yETeFnV7t/?mibextid=wwXIfr" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-indigo-500 group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+              </span>
+              <span class="material-symbols-outlined text-xs">arrow_outward</span>
+            </a>
+            <a href="https://x.com/technosra?s=11" target="_blank" rel="noopener" class="hover:text-primary transition-colors flex items-center justify-between group py-0.5">
+              <span class="flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 fill-current text-on-surface group-hover:text-primary transition-colors shrink-0" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>X (Twitter)</span>
               </span>
               <span class="material-symbols-outlined text-xs">arrow_outward</span>
             </a>

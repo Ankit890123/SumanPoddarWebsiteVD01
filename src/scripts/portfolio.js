@@ -161,8 +161,20 @@ function initScreeningModal() {
           modalVideo.currentTime = 0;
           modalVideo.play().then(() => {
             if (playIcon) playIcon.textContent = 'pause';
+            if (playPauseBtn) {
+              playPauseBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+              playPauseBtn.style.opacity = '0';
+              playPauseBtn.style.visibility = 'hidden';
+            }
+            modal.classList.add('video-is-playing');
           }).catch(() => {
             if (playIcon) playIcon.textContent = 'play_arrow';
+            if (playPauseBtn) {
+              playPauseBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+              playPauseBtn.style.opacity = '';
+              playPauseBtn.style.visibility = '';
+            }
+            modal.classList.remove('video-is-playing');
           });
         }
       }
@@ -194,20 +206,49 @@ function initScreeningModal() {
   });
 
   if (playPauseBtn && playIcon) {
+    function updateModalPlayUI(playing) {
+      playIcon.textContent = playing ? 'pause' : 'play_arrow';
+      if (playing) {
+        playPauseBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playPauseBtn.style.opacity = '0';
+        playPauseBtn.style.visibility = 'hidden';
+        modal.classList.add('video-is-playing');
+      } else {
+        playPauseBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playPauseBtn.style.opacity = '';
+        playPauseBtn.style.visibility = '';
+        modal.classList.remove('video-is-playing');
+      }
+    }
+
     playPauseBtn.addEventListener('click', () => {
       if (modalVideo && !modalVideo.classList.contains('hidden')) {
         if (modalVideo.paused) {
           modalVideo.play().then(() => {
-            playIcon.textContent = 'pause';
+            updateModalPlayUI(true);
             showToast('Playback Resumed (ProRes 422 HQ)');
           }).catch(() => {});
         } else {
           modalVideo.pause();
-          playIcon.textContent = 'play_arrow';
+          updateModalPlayUI(false);
           showToast('Playback Paused at Current Frame');
         }
       }
     });
+
+    if (modalVideo) {
+      modalVideo.addEventListener('play', () => updateModalPlayUI(true));
+      modalVideo.addEventListener('pause', () => updateModalPlayUI(false));
+      modalVideo.addEventListener('ended', () => updateModalPlayUI(false));
+      modalVideo.addEventListener('click', () => {
+        if (modalVideo.paused) {
+          modalVideo.play().then(() => updateModalPlayUI(true)).catch(() => {});
+        } else {
+          modalVideo.pause();
+          updateModalPlayUI(false);
+        }
+      });
+    }
   }
 }
 
@@ -1225,17 +1266,45 @@ function initPortfolioReelsCarousel() {
       video.setAttribute('playsinline', '');
       video.setAttribute('webkit-playsinline', '');
 
+      function setReelPlayingState(playing) {
+        if (playing) {
+          card.classList.add('video-is-playing');
+          if (playOverlay) {
+            playOverlay.classList.remove('opacity-100');
+            playOverlay.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+            playOverlay.style.opacity = '0';
+            playOverlay.style.visibility = 'hidden';
+          }
+          if (playBtn) {
+            playBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+            playBtn.style.opacity = '0';
+            playBtn.style.visibility = 'hidden';
+          }
+          if (playIcon) playIcon.textContent = 'pause';
+        } else {
+          card.classList.remove('video-is-playing');
+          if (playOverlay) {
+            playOverlay.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+            playOverlay.classList.add('opacity-100');
+            playOverlay.style.opacity = '';
+            playOverlay.style.visibility = '';
+          }
+          if (playBtn) {
+            playBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+            playBtn.style.opacity = '';
+            playBtn.style.visibility = '';
+          }
+          if (playIcon) playIcon.textContent = 'play_arrow';
+        }
+      }
+
       function toggleReelPlay(e) {
         if (e) e.stopPropagation();
 
         // If currently playing, pause it
         if (!video.paused) {
           video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-          if (playOverlay) {
-            playOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            playOverlay.classList.add('opacity-100');
-          }
+          setReelPlayingState(false);
           showToast('Reel paused');
           resetAutoSlideTimer();
           return;
@@ -1247,12 +1316,21 @@ function initPortfolioReelsCarousel() {
             otherVideo.pause();
             const otherCard = otherVideo.closest('.portfolio-item-card');
             if (otherCard) {
+              otherCard.classList.remove('video-is-playing');
               const otherIcon = otherCard.querySelector('.reel-play-icon');
               const otherOverlay = otherCard.querySelector('.card-play-overlay');
+              const otherBtn = otherCard.querySelector('.reel-inline-play-btn');
               if (otherIcon) otherIcon.textContent = 'play_arrow';
               if (otherOverlay) {
-                otherOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                otherOverlay.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
                 otherOverlay.classList.add('opacity-100');
+                otherOverlay.style.opacity = '';
+                otherOverlay.style.visibility = '';
+              }
+              if (otherBtn) {
+                otherBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+                otherBtn.style.opacity = '';
+                otherBtn.style.visibility = '';
               }
             }
           }
@@ -1266,11 +1344,7 @@ function initPortfolioReelsCarousel() {
         const startPromise = video.play();
         if (startPromise !== undefined) {
           startPromise.then(() => {
-            if (playIcon) playIcon.textContent = 'pause';
-            if (playOverlay) {
-              playOverlay.classList.remove('opacity-100');
-              playOverlay.classList.add('opacity-0', 'pointer-events-none');
-            }
+            setReelPlayingState(true);
             const reelTitle = card.querySelector('h4')?.textContent || 'Reel';
             showToast(`Playing "${reelTitle}" inline (9:16 Reel)`);
           }).catch(() => {
@@ -1278,19 +1352,23 @@ function initPortfolioReelsCarousel() {
             video.muted = true;
             if (muteIcon) muteIcon.textContent = 'volume_off';
             video.play().then(() => {
-              if (playIcon) playIcon.textContent = 'pause';
-              if (playOverlay) {
-                playOverlay.classList.remove('opacity-100');
-                playOverlay.classList.add('opacity-0', 'pointer-events-none');
-              }
+              setReelPlayingState(true);
               const reelTitle = card.querySelector('h4')?.textContent || 'Reel';
               showToast(`Playing "${reelTitle}" inline (Tap unmute for audio)`);
             }).catch(() => {
-              if (playIcon) playIcon.textContent = 'play_arrow';
+              setReelPlayingState(false);
             });
           });
         }
       }
+
+      video.addEventListener('play', () => setReelPlayingState(true));
+      video.addEventListener('pause', () => setReelPlayingState(false));
+      video.addEventListener('ended', () => {
+        setReelPlayingState(false);
+        if (progressBar) progressBar.style.width = '0%';
+        resetAutoSlideTimer();
+      });
 
       if (playBtn) {
         playBtn.addEventListener('click', (e) => {

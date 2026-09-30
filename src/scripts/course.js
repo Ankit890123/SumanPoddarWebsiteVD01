@@ -7,9 +7,7 @@ import {
   initCursor,
   initTimecode,
   initNavigation,
-  initCurriculumModal,
-  showToast,
-  setupWiper
+  showToast
 } from './common.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,20 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initTimecode();
   initNavigation();
-  initCurriculumModal();
 
-  // Course page specific modules
-  initCourseWiper();
+  // Course coming soon features (countdown & waitlist)
   initCourseComingSoon();
-  initCritiqueCountdown();
-  initFAQ();
 });
 
-function initCourseWiper() {
-  setupWiper('course-wipe-container', 'course-wipe-raw', 'course-wipe-handle');
-}
-
-// 12b. Course Coming Soon Countdown & Pre-Registration
+// Course Coming Soon Countdown & Pre-Registration
 function initCourseComingSoon() {
   const daysEl = document.getElementById('cs-days');
   const hoursEl = document.getElementById('cs-hours');
@@ -90,119 +80,4 @@ function initCourseComingSoon() {
       showToast(`Pre-registered ${email}! 40% launch discount reserved.`);
     });
   }
-
-  // Course Contact / Inquiry Form Handler
-  const inquiryForm = document.getElementById('course-inquiry-form');
-  const inquirySuccess = document.getElementById('course-inquiry-success');
-  if (inquiryForm) {
-    inquiryForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = (document.getElementById('course-contact-name')?.value || '').trim();
-      const email = (document.getElementById('course-contact-email')?.value || '').trim();
-      const topic = document.getElementById('course-contact-topic')?.value || 'early-bird';
-
-      if (!name || !email) {
-        showToast('Please enter your name and email.');
-        return;
-      }
-
-      try {
-        const inquiries = JSON.parse(localStorage.getItem('reel_course_inquiries') || '[]');
-        inquiries.push({ name, email, topic, timestamp: new Date().toISOString() });
-        localStorage.setItem('reel_course_inquiries', JSON.stringify(inquiries));
-      } catch (err) {
-        // ignore storage error
-      }
-
-      if (inquirySuccess) {
-        inquirySuccess.classList.remove('hidden');
-      }
-      inquiryForm.classList.add('opacity-70');
-      showToast(`Inquiry sent for ${name}! 40% discount reserved.`);
-    });
-  }
-}
-
-// 12. Live Editorial Critique Real-Time Countdown Timer
-function initCritiqueCountdown() {
-  const hoursEl = document.getElementById('countdown-hours');
-  const minutesEl = document.getElementById('countdown-minutes');
-  const secondsEl = document.getElementById('countdown-seconds');
-  if (!hoursEl || !minutesEl || !secondsEl) return;
-
-  function updateTimer() {
-    const now = new Date();
-    // Calculate target next Saturday 10:00 AM PST (18:00 UTC)
-    const day = now.getUTCDay();
-    let daysUntilSat = (6 - day + 7) % 7;
-    if (daysUntilSat === 0 && now.getUTCHours() >= 18) {
-      daysUntilSat = 7;
-    }
-    const target = new Date(now);
-    target.setUTCDate(now.getUTCDate() + daysUntilSat);
-    target.setUTCHours(18, 0, 0, 0);
-
-    const diff = Math.max(0, target.getTime() - now.getTime());
-    const totalSeconds = Math.floor(diff / 1000);
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    hoursEl.textContent = hours.toString().padStart(2, '0');
-    minutesEl.textContent = minutes.toString().padStart(2, '0');
-    secondsEl.textContent = seconds.toString().padStart(2, '0');
-  }
-
-  updateTimer();
-  setInterval(updateTimer, 1000);
-}
-
-// 7. Course Master Modules Filtering & FAQ Accordion
-function initFAQ() {
-  const faqItems = document.querySelectorAll('.faq-item');
-  faqItems.forEach(item => {
-    const toggle = item.querySelector('.faq-toggle');
-    const content = item.querySelector('.faq-content');
-    const icon = item.querySelector('.faq-icon');
-
-    if (!toggle || !content) return;
-
-    toggle.addEventListener('click', () => {
-      const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
-
-      // Close all
-      document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = null);
-      document.querySelectorAll('.faq-icon').forEach(i => i.style.transform = 'rotate(0deg)');
-
-      if (!isOpen) {
-        content.style.maxHeight = content.scrollHeight + 'px';
-        if (icon) icon.style.transform = 'rotate(180deg)';
-      }
-    });
-  });
-
-  // Course Module Filters
-  const courseFilterBtns = document.querySelectorAll('.course-filter-btn');
-  const courseCards = document.querySelectorAll('.course-card');
-
-  courseFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      courseFilterBtns.forEach(b => {
-        b.classList.remove('bg-primary-container', 'text-on-primary');
-        b.classList.add('text-on-surface-variant');
-      });
-      btn.classList.remove('text-on-surface-variant');
-      btn.classList.add('bg-primary-container', 'text-on-primary');
-
-      const filter = btn.getAttribute('data-filter');
-      courseCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
 }
