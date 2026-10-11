@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFeaturedSlider();
   initAudioToggle();
   initContinuousTimelineSlider();
-  initVideoFeedbackSuite();
+  initClientReviewsSlider();
 });
 
 // 19. Authentic 9:16 Vertical Video Reel Controller
@@ -333,212 +333,238 @@ function initContinuousTimelineSlider() {
   window.addEventListener('resize', updateScrubber, { passive: true });
 }
 
-// 11. 3D Video Slider Suite (Client Feedback with 3D Video Carousel)
-function initVideoFeedbackSuite() {
-  const container = document.getElementById('video-slider-3d-container');
-  const cards = Array.from(document.querySelectorAll('.slider-3d-card'));
-  const prevBtn = document.getElementById('slider-3d-prev-btn');
-  const nextBtn = document.getElementById('slider-3d-next-btn');
-  const dots = Array.from(document.querySelectorAll('.slider-dot'));
+// 11. Client Text Reviews Moveable Slider & Filter System
+function initClientReviewsSlider() {
+  const track = document.getElementById('reviews-slider-track');
+  const prevBtn = document.getElementById('reviews-prev-btn');
+  const nextBtn = document.getElementById('reviews-next-btn');
+  const dotsContainer = document.getElementById('reviews-pagination-dots');
+  const progressBar = document.getElementById('reviews-slider-progress');
+  const filterButtons = document.querySelectorAll('.review-filter-btn');
+  const countDisplay = document.getElementById('reviews-count');
 
-  if (!container || cards.length === 0) return;
+  if (!track) return;
 
-  let currentIndex = 0;
-  const total = cards.length;
+  const allCards = Array.from(track.querySelectorAll('.review-card'));
+  let visibleCards = allCards.filter(c => !c.classList.contains('hidden'));
+  let autoPlayTimer = null;
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeftStart = 0;
+  let hasMoved = false;
 
-  function updateSlider() {
-    cards.forEach((card, index) => {
-      // Calculate circular distance
-      let diff = index - currentIndex;
-      
-      // Standardize diff to shortest circular route if desired, or clamp
-      if (diff > total / 2) diff -= total;
-      if (diff < -total / 2) diff += total;
+  // 1. Get current step / card width including gap
+  function getCardStep() {
+    if (!visibleCards.length) return 380;
+    const firstCard = visibleCards[0];
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.gap) || 24;
+    return firstCard.offsetWidth + gap;
+  }
 
-      const video = card.querySelector('video');
-      const playBtn = card.querySelector('.slider-video-play-btn');
-      const playIcon = playBtn ? playBtn.querySelector('.material-symbols-outlined') : null;
+  // 2. Render Pagination Dots
+  function renderDots() {
+    if (!dotsContainer) return;
+    dotsContainer.innerHTML = '';
 
-      if (diff === 0) {
-        card.setAttribute('data-pos', '0');
-      } else if (diff === -1) {
-        card.setAttribute('data-pos', '-1');
-        if (video && !video.paused) {
-          video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        }
-      } else if (diff === 1) {
-        card.setAttribute('data-pos', '1');
-        if (video && !video.paused) {
-          video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        }
-      } else if (diff === -2 || diff < -2) {
-        card.setAttribute('data-pos', '-2');
-        if (video && !video.paused) {
-          video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        }
-      } else if (diff === 2 || diff > 2) {
-        card.setAttribute('data-pos', '2');
-        if (video && !video.paused) {
-          video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        }
-      } else {
-        card.setAttribute('data-pos', 'hidden');
-        if (video && !video.paused) {
-          video.pause();
-          if (playIcon) playIcon.textContent = 'play_arrow';
-        }
-      }
-    });
-
-    // Update dots
-    dots.forEach((dot, idx) => {
-      if (idx === currentIndex) {
-        dot.classList.remove('w-2', 'bg-outline-variant/60');
-        dot.classList.add('w-8', 'bg-primary');
-      } else {
-        dot.classList.remove('w-8', 'bg-primary');
-        dot.classList.add('w-2', 'bg-outline-variant/60');
-      }
+    visibleCards.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = `review-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === 0 ? 'w-7 bg-primary shadow-sm' : 'w-2 bg-outline-variant/60 hover:bg-on-surface-variant'}`;
+      dot.setAttribute('aria-label', `Go to review ${idx + 1}`);
+      dot.setAttribute('title', `Review ${idx + 1}`);
+      dot.addEventListener('click', () => {
+        scrollToIndex(idx);
+      });
+      dotsContainer.appendChild(dot);
     });
   }
 
-  function goToSlide(index) {
-    // Pause currently active video before transition
-    const activeCard = cards[currentIndex];
-    if (activeCard) {
-      const activeVid = activeCard.querySelector('video');
-      const activeBtn = activeCard.querySelector('.slider-video-play-btn');
-      const activeIcon = activeBtn ? activeBtn.querySelector('.material-symbols-outlined') : null;
-      if (activeVid && !activeVid.paused) {
-        activeVid.pause();
-      }
-      activeCard.classList.remove('video-is-playing');
-      if (activeBtn) {
-        activeBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
-        activeBtn.style.opacity = '';
-        activeBtn.style.visibility = '';
-      }
-      if (activeIcon) activeIcon.textContent = 'play_arrow';
-    }
-
-    currentIndex = (index + total) % total;
-    updateSlider();
-  }
-
-  function nextSlide() {
-    goToSlide(currentIndex + 1);
-  }
-
-  function prevSlide() {
-    goToSlide(currentIndex - 1);
-  }
-
-  if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-  if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-  // Click on dots
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const idx = parseInt(dot.getAttribute('data-index') || '0', 10);
-      goToSlide(idx);
+  // 3. Scroll to specific index
+  function scrollToIndex(index) {
+    if (index < 0) index = 0;
+    if (index >= visibleCards.length) index = visibleCards.length - 1;
+    const step = getCardStep();
+    track.scrollTo({
+      left: index * step,
+      behavior: 'smooth'
     });
-  });
+    updateUI(index);
+  }
 
-  // Setup cards click & video play/pause
-  cards.forEach((card, index) => {
-    const video = card.querySelector('video');
-    const playBtn = card.querySelector('.slider-video-play-btn');
-    const playIcon = playBtn ? playBtn.querySelector('.material-symbols-outlined') : null;
+  // 4. Update UI Indicators (Dots & Progress)
+  function updateUI(forcedIndex = null) {
+    if (!visibleCards.length) return;
+    const step = getCardStep();
+    const currentIndex = forcedIndex !== null ? forcedIndex : Math.round(track.scrollLeft / step);
 
-    function updateCardPlayUI(playing) {
-      if (playIcon) playIcon.textContent = playing ? 'pause' : 'play_arrow';
-      if (playBtn) {
-        if (playing) {
-          playBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
-          playBtn.style.opacity = '0';
-          playBtn.style.visibility = 'hidden';
-          card.classList.add('video-is-playing');
+    // Update Dots
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll('.review-dot');
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.className = 'review-dot h-2 rounded-full transition-all duration-300 cursor-pointer w-7 bg-primary shadow-sm';
         } else {
-          playBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
-          playBtn.style.opacity = '';
-          playBtn.style.visibility = '';
-          card.classList.remove('video-is-playing');
+          dot.className = 'review-dot h-2 rounded-full transition-all duration-300 cursor-pointer w-2 bg-outline-variant/60 hover:bg-on-surface-variant';
         }
-      }
+      });
     }
 
-    // Click on side card moves it to center
-    card.addEventListener('click', (e) => {
-      const pos = card.getAttribute('data-pos');
-      if (pos === '0') {
-        // Toggle play if clicked on play button or video directly
-        if (e.target.closest('.slider-video-play-btn') || e.target.tagName === 'VIDEO') {
-          if (!video) return;
-          if (video.paused) {
-            video.play().then(() => {
-              updateCardPlayUI(true);
-              showToast('Playing Client Video Feedback');
-            }).catch(() => {});
-          } else {
-            video.pause();
-            updateCardPlayUI(false);
-            showToast('Paused Video');
-          }
-        }
-      } else {
-        // Click on side card brings it to center
-        goToSlide(index);
-      }
-    });
-
-    if (video) {
-      video.addEventListener('ended', () => updateCardPlayUI(false));
-      video.addEventListener('pause', () => updateCardPlayUI(false));
-      video.addEventListener('play', () => updateCardPlayUI(true));
+    // Update Progress Bar
+    if (progressBar) {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const pct = maxScroll > 0 ? Math.min(100, Math.max(10, ((track.scrollLeft / maxScroll) * 100))) : 100;
+      progressBar.style.width = `${pct}%`;
     }
-  });
 
-  // Touch Swipe gestures
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  container.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  container.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  }, { passive: true });
-
-  function handleSwipe() {
-    const threshold = 40;
-    if (touchEndX < touchStartX - threshold) {
-      nextSlide();
-    } else if (touchEndX > touchStartX + threshold) {
-      prevSlide();
+    // Update Button Disabled State styling
+    if (prevBtn) {
+      prevBtn.style.opacity = track.scrollLeft <= 10 ? '0.5' : '1';
+    }
+    if (nextBtn) {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      nextBtn.style.opacity = track.scrollLeft >= maxScroll - 10 ? '0.5' : '1';
     }
   }
 
-  // Keyboard navigation
-  window.addEventListener('keydown', (e) => {
-    const section = document.getElementById('client-feedback-section');
-    if (!section) return;
-    const rect = section.getBoundingClientRect();
-    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-    if (isVisible) {
-      if (e.key === 'ArrowLeft') {
-        prevSlide();
-      } else if (e.key === 'ArrowRight') {
-        nextSlide();
+  // 5. Navigation Arrow Button Listeners
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      pauseAutoPlay();
+      const step = getCardStep();
+      track.scrollBy({ left: -step, behavior: 'smooth' });
+      setTimeout(updateUI, 350);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      pauseAutoPlay();
+      const step = getCardStep();
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 20) {
+        // Loop back to start
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: step, behavior: 'smooth' });
       }
-    }
+      setTimeout(updateUI, 350);
+    });
+  }
+
+  // 6. Mouse Dragging Mechanics
+  track.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    hasMoved = false;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeftStart = track.scrollLeft;
+    track.classList.add('cursor-grabbing');
+    track.classList.remove('cursor-grab', 'scroll-smooth');
+    pauseAutoPlay();
   });
 
-  // Initial render
-  updateSlider();
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5; // Drag sensitivity
+    if (Math.abs(walk) > 5) hasMoved = true;
+    track.scrollLeft = scrollLeftStart - walk;
+    updateUI();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('cursor-grabbing');
+    track.classList.add('cursor-grab', 'scroll-smooth');
+    updateUI();
+    resumeAutoPlay();
+  });
+
+  // 7. Touch Swiping & Scroll Events
+  track.addEventListener('scroll', () => {
+    requestAnimationFrame(() => updateUI());
+  }, { passive: true });
+
+  // 8. Auto-Play Carousel Glide
+  function startAutoPlay() {
+    stopAutoPlay();
+    autoPlayTimer = setInterval(() => {
+      if (isDragging) return;
+      const step = getCardStep();
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 20) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: step, behavior: 'smooth' });
+      }
+      setTimeout(updateUI, 350);
+    }, 4500);
+  }
+
+  function stopAutoPlay() {
+    if (autoPlayTimer) clearInterval(autoPlayTimer);
+  }
+
+  function pauseAutoPlay() {
+    stopAutoPlay();
+  }
+
+  function resumeAutoPlay() {
+    startAutoPlay();
+  }
+
+  track.addEventListener('mouseenter', pauseAutoPlay);
+  track.addEventListener('mouseleave', resumeAutoPlay);
+  track.addEventListener('touchstart', pauseAutoPlay, { passive: true });
+  track.addEventListener('touchend', resumeAutoPlay, { passive: true });
+
+  // 9. Category Filtering Integration
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update button styling
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'shadow-md', 'active');
+        b.classList.add('bg-surface-container', 'border', 'border-outline-variant/40', 'text-on-surface');
+      });
+
+      btn.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'shadow-md', 'active');
+      btn.classList.remove('bg-surface-container', 'border', 'border-outline-variant/40', 'text-on-surface');
+
+      // Filter cards
+      let count = 0;
+      allCards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+          count++;
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('flex');
+        }
+      });
+
+      visibleCards = allCards.filter(c => !c.classList.contains('hidden'));
+
+      if (countDisplay) {
+        countDisplay.textContent = count;
+      }
+
+      // Reset track position & rebuild dots
+      track.scrollTo({ left: 0, behavior: 'smooth' });
+      renderDots();
+      setTimeout(updateUI, 200);
+    });
+  });
+
+  // Initial Boot
+  renderDots();
+  updateUI(0);
+  startAutoPlay();
+  window.addEventListener('resize', () => updateUI(), { passive: true });
 }

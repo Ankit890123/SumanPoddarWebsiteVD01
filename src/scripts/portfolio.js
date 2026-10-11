@@ -31,7 +31,123 @@ document.addEventListener('DOMContentLoaded', () => {
   initColorLab();
   initPortfolioImageUploaders();
   initPortfolioReelsCarousel();
+  initHeroReel();
 });
+
+// Authentic 9:16 Vertical Video Reel Controller
+function initHeroReel() {
+  const reelWrapper = document.getElementById('hero-reel-wrapper');
+  const heroVideo = document.getElementById('hero-reel-video');
+  const playBtn = document.getElementById('hero-reel-play-btn');
+  const playIcon = document.getElementById('hero-reel-play-icon');
+  const progressBar = document.getElementById('hero-reel-progress');
+  const likeBtn = document.getElementById('reel-like-btn');
+  const likeIcon = document.getElementById('reel-like-icon');
+  const likeCount = document.getElementById('reel-like-count');
+  const aspectReelBtn = document.getElementById('hero-aspect-reel');
+  const aspectCinemaBtn = document.getElementById('hero-aspect-cinema');
+
+  if (!reelWrapper) return;
+
+  function updateHeroPlayUI(playing) {
+    if (playIcon) playIcon.textContent = playing ? 'pause' : 'play_arrow';
+    if (playBtn) {
+      if (playing) {
+        playBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playBtn.style.opacity = '0';
+        playBtn.style.visibility = 'hidden';
+        reelWrapper.classList.add('video-is-playing');
+      } else {
+        playBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playBtn.style.opacity = '';
+        playBtn.style.visibility = '';
+        reelWrapper.classList.remove('video-is-playing');
+      }
+    }
+  }
+
+  if (heroVideo) {
+    heroVideo.addEventListener('play', () => updateHeroPlayUI(true));
+    heroVideo.addEventListener('pause', () => updateHeroPlayUI(false));
+    heroVideo.addEventListener('ended', () => updateHeroPlayUI(false));
+    heroVideo.addEventListener('click', () => {
+      if (heroVideo.paused) {
+        heroVideo.play().then(() => updateHeroPlayUI(true)).catch(() => {});
+      } else {
+        heroVideo.pause();
+        updateHeroPlayUI(false);
+      }
+    });
+    heroVideo.addEventListener('timeupdate', () => {
+      if (!heroVideo.duration) return;
+      const pct = (heroVideo.currentTime / heroVideo.duration) * 100;
+      if (progressBar) progressBar.style.width = `${pct}%`;
+    });
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!heroVideo) return;
+      if (heroVideo.paused) {
+        heroVideo.play().then(() => {
+          updateHeroPlayUI(true);
+          if (showToast) showToast('Playing 9:16 Vertical Reel • tecnosra Cut');
+        }).catch(() => {});
+      } else {
+        heroVideo.pause();
+        updateHeroPlayUI(false);
+      }
+    });
+  }
+
+  // Like button counter
+  let isLiked = false;
+  if (likeBtn && likeIcon && likeCount) {
+    likeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isLiked = !isLiked;
+      if (isLiked) {
+        likeIcon.classList.add('text-red-500');
+        likeIcon.textContent = 'favorite';
+        likeCount.textContent = '142.1K';
+        if (showToast) showToast('Reel added to favorites!');
+      } else {
+        likeIcon.classList.remove('text-red-500');
+        likeCount.textContent = '142K';
+      }
+    });
+  }
+
+  // Aspect Ratio Switcher (9:16 Reel vs 16:9 Cinema Widescreen)
+  const outerContainer = reelWrapper.parentElement;
+
+  if (aspectReelBtn && aspectCinemaBtn && outerContainer) {
+    aspectReelBtn.addEventListener('click', () => {
+      reelWrapper.classList.remove('aspect-video', 'rounded-2xl');
+      reelWrapper.classList.add('aspect-[9/16]', 'rounded-[36px]');
+      outerContainer.classList.remove('max-w-lg', 'lg:max-w-xl');
+      outerContainer.classList.add('max-w-[340px]', 'sm:max-w-[370px]');
+
+      aspectReelBtn.className = 'px-2.5 py-1 rounded bg-primary text-on-primary text-[10px] font-bold tracking-wider transition-all cursor-pointer shadow-sm';
+      aspectCinemaBtn.className = 'px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface text-[10px] font-bold tracking-wider transition-all cursor-pointer';
+
+      if (showToast) showToast('Switched to 9:16 Vertical Reel Format');
+    });
+
+    aspectCinemaBtn.addEventListener('click', () => {
+      reelWrapper.classList.remove('aspect-[9/16]', 'rounded-[36px]');
+      reelWrapper.classList.add('aspect-video', 'rounded-2xl');
+      outerContainer.classList.remove('max-w-[340px]', 'sm:max-w-[370px]');
+      outerContainer.classList.add('max-w-lg', 'lg:max-w-xl');
+
+      aspectCinemaBtn.className = 'px-2.5 py-1 rounded bg-primary text-on-primary text-[10px] font-bold tracking-wider transition-all cursor-pointer shadow-sm';
+      aspectReelBtn.className = 'px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface text-[10px] font-bold tracking-wider transition-all cursor-pointer';
+
+      if (showToast) showToast('Switched to 16:9 Cinema Widescreen Format');
+    });
+  }
+}
 
 // 13. Portfolio Category Filter System
 function initPortfolioFilters() {
@@ -881,7 +997,7 @@ function initPortfolioImageUploaders() {
   // Handle Hero Reset
   if (resetBtn && heroImg) {
     resetBtn.addEventListener('click', () => {
-      heroImg.src = '/suman_kumar.jpg';
+      heroImg.src = '/src/assets/images/suman_kumar.jpg';
       heroImg.classList.remove('object-contain', 'p-4');
       heroImg.classList.add('object-cover');
       if (fitLabel) fitLabel.textContent = 'Cover';

@@ -6,14 +6,14 @@
 
 /* Portfolio Hero PNG Cutout Floating Presentation (No Rectangular Box) */
 #portfolio-hero-img {
-  filter: drop-shadow(0 20px 40px rgba(220, 38, 38, 0.28)) drop-shadow(0 10px 20px rgba(245, 158, 11, 0.2));
+  filter: drop-shadow(0 20px 40px rgba(0, 174, 239, 0.3)) drop-shadow(0 10px 20px rgba(255, 212, 0, 0.25));
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
   will-change: transform;
 }
 
 #portfolio-hero-img:hover {
   transform: scale(1.03) translateY(-4px);
-  filter: drop-shadow(0 25px 50px rgba(220, 38, 38, 0.35)) drop-shadow(0 15px 30px rgba(245, 158, 11, 0.3));
+  filter: drop-shadow(0 25px 50px rgba(0, 174, 239, 0.45)) drop-shadow(0 15px 30px rgba(255, 212, 0, 0.35));
 }
 
 /* Category Filter Bar Buttons */
@@ -24,9 +24,9 @@
 
 .portfolio-filter-btn.active {
   background-color: var(--primary);
-  color: #0e0e10;
+  color: #0B0B0F;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(255, 184, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 212, 0, 0.4);
 }
 
 .portfolio-filter-btn:not(.active):hover {
@@ -43,8 +43,8 @@
 
 .portfolio-item-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 220, 161, 0.5);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.9), 0 0 20px -5px rgba(255, 184, 0, 0.2);
+  border-color: rgba(0, 174, 239, 0.6);
+  box-shadow: 0 20px 40px -15px rgba(11, 11, 15, 0.9), 0 0 20px -5px rgba(255, 212, 0, 0.35);
 }
 
 /* Vertical 9:16 Social Reels Aspect Ratio */
@@ -94,7 +94,7 @@ html.light .skill-item-card {
 
 html.light .portfolio-filter-btn.active {
   background-color: var(--primary);
-  color: #ffffff;
+  color: #0B0B0F;
 }
 
 /* ========================================================================= */

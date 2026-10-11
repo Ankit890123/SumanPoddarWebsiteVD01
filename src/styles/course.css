@@ -25,7 +25,7 @@
 }
 
 .curriculum-module-card:hover {
-  border-color: rgba(255, 220, 161, 0.4);
+  border-color: rgba(0, 174, 239, 0.5);
   transform: translateY(-2px);
 }
 
@@ -46,9 +46,9 @@
 
 /* Pricing Tier Enrollment Card */
 .tier-card-featured {
-  background: linear-gradient(180deg, rgba(255, 184, 0, 0.08) 0%, var(--surface-container) 100%);
+  background: linear-gradient(180deg, rgba(255, 212, 0, 0.12) 0%, var(--surface-container) 100%);
   border: 2px solid var(--primary-container);
-  box-shadow: 0 25px 50px -12px rgba(255, 184, 0, 0.15);
+  box-shadow: 0 25px 50px -12px rgba(255, 212, 0, 0.25);
 }
 
 /* Countdown Timer Box */

@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
   <title>My Course // Video Editing Academy Masterclass - tecnosra // Suman Poddar</title>
   <meta name="description" content="Mastering the Cut with Suman Poddar from tecnosra. The exact post-production workflows, rhythmic pacing psychology, cinematic sound design formulas, and DaVinci color grading science." />
   <meta property="og:title" content="My Course // Video Editing Academy Masterclass - tecnosra // Suman Poddar" />
   <meta property="og:description" content="Mastering the Cut with Suman Poddar from tecnosra. The exact post-production workflows, rhythmic pacing psychology, cinematic sound design formulas, and DaVinci color grading science." />
   <link rel="icon" type="image/svg+xml" href="/tsra_logo.svg" />
 
-  <!-- Theme Initialization (Prevents FOUC) -->
+  <!-- Theme Initialization (Defaults to Light Mode on open) -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
+      try {
+        const sessionTheme = sessionStorage.getItem('theme');
+        if (sessionTheme === 'dark') {
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+          if (!sessionTheme) {
+            localStorage.removeItem('theme');
+          }
+        }
+      } catch (e) {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
       }
     })();
   </script>
@@ -36,6 +49,9 @@
       theme: {
         extend: {
           colors: {
+            'electric-blue': '#00AEEF',
+            'bright-yellow': '#FFD400',
+            'deep-black': '#0B0B0F',
             'surface-container-lowest': 'rgb(var(--color-surface-container-lowest) / <alpha-value>)',
             'surface-container-low': 'rgb(var(--color-surface-container-low) / <alpha-value>)',
             'surface-container': 'rgb(var(--color-surface-container) / <alpha-value>)',
@@ -59,9 +75,12 @@
             'error': 'rgb(var(--color-error) / <alpha-value>)',
           },
           fontFamily: {
-            syne: ['Syne', 'sans-serif'],
-            space: ['Space Grotesk', 'monospace'],
-            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['"Times New Roman"', 'Times', 'serif'],
+            serif: ['"Times New Roman"', 'Times', 'serif'],
+            mono: ['"Times New Roman"', 'Times', 'serif'],
+            syne: ['"Times New Roman"', 'Times', 'serif'],
+            space: ['"Times New Roman"', 'Times', 'serif'],
+            jakarta: ['"Times New Roman"', 'Times', 'serif'],
           },
           spacing: {
             'space-xxs': '2px',
@@ -97,7 +116,6 @@
           <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
           <div class="flex flex-col">
             <span class="font-syne font-bold text-sm tracking-wider text-on-surface uppercase group-hover:text-primary transition-colors">Techno SRA</span>
-            <span class="font-space font-medium text-[10px] tracking-widest text-on-surface-variant uppercase">TSRA • Suman Poddar</span>
           </div>
         </a>
       </div>
@@ -180,62 +198,16 @@
   <!-- ========================================================================= -->
   <main id="screen-my-course" class="app-screen block">
     
-    <!-- Masterclass Coming Soon Section -->
-    <section class="relative min-h-[calc(100vh-160px)] py-20 sm:py-32 border-b border-outline-variant/20 overflow-hidden flex items-center justify-center">
+    <!-- Coming Soon Section -->
+    <section class="relative min-h-[calc(100vh-160px)] py-24 sm:py-36 border-b border-outline-variant/20 overflow-hidden flex items-center justify-center">
       <!-- Glow ambient backdrop -->
-      <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-primary-container/15 rounded-full blur-[180px] pointer-events-none"></div>
-      <div class="absolute top-2/3 left-1/3 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[140px] pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-container/20 rounded-full blur-[180px] pointer-events-none"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-secondary/15 rounded-full blur-[140px] pointer-events-none"></div>
 
       <div class="w-full max-w-[1640px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 text-center relative z-10 my-auto">
-        
-        <!-- Coming Soon Announcement Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container border border-primary/40 text-primary font-space text-xs font-bold uppercase tracking-widest mb-6 shadow-lg shadow-primary/10">
-          <span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
-          <span>OFFICIAL LAUNCH • COMING SOON // FALL 2025</span>
-        </div>
-
-        <h1 class="font-syne font-extrabold text-5xl sm:text-7xl lg:text-8xl leading-none tracking-tight uppercase max-w-5xl mx-auto">
-          MASTERCLASS IS <br class="hidden sm:inline" />
+        <h1 class="font-syne font-extrabold text-4xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tight uppercase px-2">
           <span class="bg-gradient-to-r from-primary via-primary-container to-secondary text-transparent bg-clip-text">COMING SOON</span>
         </h1>
-
-        <p class="mt-6 font-jakarta text-lg sm:text-xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
-          The ultimate master-level curriculum on cinema-grade narrative editing, 24fps multi-track rhythm engineering, DaVinci Resolve color science, and sound design architecture.
-        </p>
-
-        <!-- Real-Time Launch Countdown Timer -->
-        <div class="mt-12 inline-grid grid-cols-4 gap-3 sm:gap-6 p-4 sm:p-6 rounded-2xl bg-surface-container border border-outline-variant/40 shadow-xl">
-          <div class="flex flex-col items-center">
-            <span id="cs-days" class="font-space font-extrabold text-3xl sm:text-5xl text-primary font-mono">24</span>
-            <span class="font-space text-[10px] sm:text-xs text-on-surface-variant uppercase tracking-wider mt-1">Days</span>
-          </div>
-          <div class="flex flex-col items-center border-l border-outline-variant/30 pl-3 sm:pl-6">
-            <span id="cs-hours" class="font-space font-extrabold text-3xl sm:text-5xl text-secondary font-mono">14</span>
-            <span class="font-space text-[10px] sm:text-xs text-on-surface-variant uppercase tracking-wider mt-1">Hours</span>
-          </div>
-          <div class="flex flex-col items-center border-l border-outline-variant/30 pl-3 sm:pl-6">
-            <span id="cs-minutes" class="font-space font-extrabold text-3xl sm:text-5xl text-on-surface font-mono">38</span>
-            <span class="font-space text-[10px] sm:text-xs text-on-surface-variant uppercase tracking-wider mt-1">Minutes</span>
-          </div>
-          <div class="flex flex-col items-center border-l border-outline-variant/30 pl-3 sm:pl-6">
-            <span id="cs-seconds" class="font-space font-extrabold text-3xl sm:text-5xl text-primary font-mono">42</span>
-            <span class="font-space text-[10px] sm:text-xs text-on-surface-variant uppercase tracking-wider mt-1">Seconds</span>
-          </div>
-        </div>
-
-        <!-- Pre-Registration / Waitlist Form -->
-        <div class="mt-10 max-w-md mx-auto">
-          <form id="pre-register-form" class="flex flex-col sm:flex-row gap-3">
-            <input type="email" id="waitlist-email" required placeholder="Enter your email for 40% launch pass" class="flex-1 px-4 py-3 rounded-xl bg-surface-container-low border border-outline-variant/50 text-on-surface font-jakarta text-sm focus:outline-none focus:border-primary transition-colors" />
-            <button type="submit" class="px-6 py-3 rounded-xl bg-primary-container text-on-primary font-space font-bold text-xs uppercase tracking-wider hover:bg-primary-fixed-dim transition-all shadow-md shrink-0">
-              Claim 40% Off
-            </button>
-          </form>
-          <div id="waitlist-success" class="hidden mt-3 p-3 rounded-xl bg-primary/10 border border-primary/30 text-primary font-space text-xs">
-            🎉 Pre-registration confirmed! Your 40% VIP early-bird discount code has been reserved.
-          </div>
-        </div>
-
       </div>
     </section>
 

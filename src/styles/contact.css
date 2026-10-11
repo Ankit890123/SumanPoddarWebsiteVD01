@@ -8,9 +8,9 @@
 #contact-inquiry-form input:focus,
 #contact-inquiry-form textarea:focus,
 #contact-inquiry-form select:focus {
-  border-color: var(--primary);
+  border-color: var(--secondary);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 184, 0, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.25);
   background-color: var(--surface-high);
 }
 
@@ -21,10 +21,10 @@
 
 .project-scope-label:has(input[type="radio"]:checked) {
   border-color: var(--primary);
-  background-color: rgba(255, 184, 0, 0.12);
-  color: var(--primary);
+  background-color: rgba(255, 212, 0, 0.15);
+  color: var(--on-surface);
   font-weight: 700;
-  box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
+  box-shadow: 0 0 15px rgba(255, 212, 0, 0.25);
 }
 
 /* Custom Range Input Slider (Rate & Turnaround Estimator) */
@@ -45,13 +45,13 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%;
   background: var(--primary);
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+  box-shadow: 0 0 10px rgba(255, 212, 0, 0.6);
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.2);
-  background: var(--primary-container);
+  background: var(--secondary);
 }
 
 input[type="range"]::-moz-range-thumb {

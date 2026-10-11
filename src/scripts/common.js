@@ -3,51 +3,53 @@
  * Shared Common Utilities & Navigation Logic
  */
 
-// Theme Toggle Engine (Dark & Light Mode)
+// Theme Toggle Engine (Dark & Light Mode - Defaults to Light Mode on open)
 function initThemeToggle() {
   const toggleButtons = document.querySelectorAll('.theme-toggle');
 
   function applyTheme(theme) {
-    if (theme === 'light') {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-      localStorage.setItem('theme', 'light');
-    } else {
+    if (theme === 'dark') {
       document.documentElement.classList.remove('light');
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
+      try { sessionStorage.setItem('theme', 'dark'); } catch (e) {}
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
+      try { sessionStorage.setItem('theme', 'light'); } catch (e) {}
     }
     
     // Update button accessibility and tooltip attributes
     toggleButtons.forEach(btn => {
-      const isLight = theme === 'light';
+      const isLight = theme !== 'dark';
       btn.setAttribute('aria-label', isLight ? 'Switch to Dark mode' : 'Switch to Light mode');
       btn.setAttribute('title', isLight ? 'Switch to Dark mode' : 'Switch to Light mode');
     });
   }
 
-  // Check saved theme or default
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    applyTheme(savedTheme);
-  } else {
+  // Clear any legacy localStorage theme to guarantee fresh visits always open in light mode
+  try {
+    localStorage.removeItem('theme');
+  } catch (e) {}
+
+  // Check active session theme if user toggled during this session; otherwise open in light mode
+  let sessionTheme = null;
+  try {
+    sessionTheme = sessionStorage.getItem('theme');
+  } catch (e) {}
+
+  if (sessionTheme === 'dark') {
     applyTheme('dark');
+  } else {
+    applyTheme('light');
   }
 
   // Click listeners for all theme toggle triggers (desktop & mobile)
   toggleButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const currentIsLight = document.documentElement.classList.contains('light');
+      const currentIsLight = document.documentElement.classList.contains('light') || !document.documentElement.classList.contains('dark');
       applyTheme(currentIsLight ? 'dark' : 'light');
     });
-  });
-
-  // Listen for OS system theme changes
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
   });
 }
 
@@ -93,7 +95,7 @@ function initTimecode() {
   }, 1000 / 24);
 }
 
-// 3. Multi-Screen Navigation
+// 3. Multi-Screen Navigation & Mobile Drawer
 function initNavigation() {
   const navLinks = document.querySelectorAll('[data-path]');
   const screens = document.querySelectorAll('.app-screen');
@@ -101,15 +103,69 @@ function initNavigation() {
   const mobileOpenBtn = document.getElementById('mobile-menu-open');
   const mobileCloseBtn = document.getElementById('mobile-menu-close');
 
-  if (mobileOpenBtn && mobileDrawer) {
-    mobileOpenBtn.addEventListener('click', () => {
+  function openMobileMenu() {
+    if (mobileDrawer) {
       mobileDrawer.classList.remove('translate-x-full');
+      document.body.classList.add('overflow-hidden');
+    }
+  }
+
+  function closeMobileMenu() {
+    if (mobileDrawer) {
+      mobileDrawer.classList.add('translate-x-full');
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+
+  if (mobileOpenBtn) {
+    mobileOpenBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMobileMenu();
     });
   }
-  if (mobileCloseBtn && mobileDrawer) {
-    mobileCloseBtn.addEventListener('click', () => {
-      mobileDrawer.classList.add('translate-x-full');
+
+  if (mobileCloseBtn) {
+    mobileCloseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeMobileMenu();
     });
+  }
+
+  // Close mobile drawer when clicking on any link inside it
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Close when tapping Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileDrawer.classList.contains('translate-x-full')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Touch swipe-to-close gesture support (swiping right to close)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    mobileDrawer.addEventListener('touchstart', (e) => {
+      if (e.touches[0]) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    mobileDrawer.addEventListener('touchend', (e) => {
+      if (e.changedTouches[0]) {
+        const diffX = e.changedTouches[0].clientX - touchStartX;
+        const diffY = Math.abs(e.changedTouches[0].clientY - touchStartY);
+        // Swiped right by more than 50px without heavy vertical scroll
+        if (diffX > 50 && diffY < 100) {
+          closeMobileMenu();
+        }
+      }
+    }, { passive: true });
   }
 
   function navigateTo(path) {
@@ -138,13 +194,12 @@ function initNavigation() {
       });
 
       // Close mobile drawer if open
-      if (mobileDrawer) {
-        mobileDrawer.classList.add('translate-x-full');
-      }
+      closeMobileMenu();
 
       // Scroll to top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+      closeMobileMenu();
       const pageMap = {
         'home': '/index.html',
         'my-course': '/my-course.html',
@@ -173,14 +228,13 @@ function initNavigation() {
       if (path === activePage && targetScreen) {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        if (mobileDrawer) {
-          mobileDrawer.classList.add('translate-x-full');
-        }
+        closeMobileMenu();
         return;
       }
 
       // If linking to separate HTML page and screen is not on this page
       if (!targetScreen || screens.length <= 1) {
+        closeMobileMenu();
         if (href && (href.endsWith('.html') || href.startsWith('/'))) {
           return;
         }
@@ -234,10 +288,13 @@ function showToast(message) {
     document.body.appendChild(toast);
   }
 
-  toast.innerHTML = `
-    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-    <span>${message}</span>
-  `;
+  toast.innerHTML = '';
+  const dot = document.createElement('span');
+  dot.className = 'w-2 h-2 rounded-full bg-primary animate-pulse shrink-0';
+  const label = document.createElement('span');
+  label.textContent = String(message || '');
+  toast.appendChild(dot);
+  toast.appendChild(label);
 
   toast.classList.remove('translate-y-12', 'opacity-0');
   toast.classList.add('translate-y-0', 'opacity-100');
@@ -758,16 +815,135 @@ function initScreeningModal() {
   });
 }
 
+// 19. Authentic 9:16 Vertical Video Reel Controller
+function initHeroReel() {
+  const reelWrapper = document.getElementById('hero-reel-wrapper');
+  const heroVideo = document.getElementById('hero-reel-video');
+  const playBtn = document.getElementById('hero-reel-play-btn');
+  const playIcon = document.getElementById('hero-reel-play-icon');
+  const progressBar = document.getElementById('hero-reel-progress');
+  const likeBtn = document.getElementById('reel-like-btn');
+  const likeIcon = document.getElementById('reel-like-icon');
+  const likeCount = document.getElementById('reel-like-count');
+  const aspectReelBtn = document.getElementById('hero-aspect-reel');
+  const aspectCinemaBtn = document.getElementById('hero-aspect-cinema');
+
+  if (!reelWrapper) return;
+
+  function updateHeroPlayUI(playing) {
+    if (playIcon) playIcon.textContent = playing ? 'pause' : 'play_arrow';
+    if (playBtn) {
+      if (playing) {
+        playBtn.classList.add('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playBtn.style.opacity = '0';
+        playBtn.style.visibility = 'hidden';
+        reelWrapper.classList.add('video-is-playing');
+      } else {
+        playBtn.classList.remove('opacity-0', 'pointer-events-none', 'video-btn-hidden');
+        playBtn.style.opacity = '';
+        playBtn.style.visibility = '';
+        reelWrapper.classList.remove('video-is-playing');
+      }
+    }
+  }
+
+  if (heroVideo) {
+    heroVideo.addEventListener('play', () => updateHeroPlayUI(true));
+    heroVideo.addEventListener('pause', () => updateHeroPlayUI(false));
+    heroVideo.addEventListener('ended', () => updateHeroPlayUI(false));
+    heroVideo.addEventListener('click', () => {
+      if (heroVideo.paused) {
+        heroVideo.play().then(() => updateHeroPlayUI(true)).catch(() => {});
+      } else {
+        heroVideo.pause();
+        updateHeroPlayUI(false);
+      }
+    });
+    heroVideo.addEventListener('timeupdate', () => {
+      if (!heroVideo.duration) return;
+      const pct = (heroVideo.currentTime / heroVideo.duration) * 100;
+      if (progressBar) progressBar.style.width = `${pct}%`;
+    });
+  }
+
+  if (playBtn) {
+    playBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!heroVideo) return;
+      if (heroVideo.paused) {
+        heroVideo.play().then(() => {
+          updateHeroPlayUI(true);
+          if (window.showToast) window.showToast('Playing 9:16 Vertical Reel • tecnosra Cut');
+        }).catch(() => {});
+      } else {
+        heroVideo.pause();
+        updateHeroPlayUI(false);
+      }
+    });
+  }
+
+  // Like button counter
+  let isLiked = false;
+  if (likeBtn && likeIcon && likeCount) {
+    likeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isLiked = !isLiked;
+      if (isLiked) {
+        likeIcon.classList.add('text-red-500');
+        likeIcon.textContent = 'favorite';
+        likeCount.textContent = '142.1K';
+        if (window.showToast) window.showToast('Reel added to favorites!');
+      } else {
+        likeIcon.classList.remove('text-red-500');
+        likeCount.textContent = '142K';
+      }
+    });
+  }
+
+  // Aspect Ratio Switcher (9:16 Reel vs 16:9 Cinema Widescreen)
+  const outerContainer = reelWrapper.parentElement;
+
+  if (aspectReelBtn && aspectCinemaBtn && outerContainer) {
+    aspectReelBtn.addEventListener('click', () => {
+      // Set to 9:16 Reel
+      reelWrapper.classList.remove('aspect-video', 'rounded-2xl');
+      reelWrapper.classList.add('aspect-[9/16]', 'rounded-[36px]');
+      outerContainer.classList.remove('max-w-lg', 'lg:max-w-xl');
+      outerContainer.classList.add('max-w-[340px]', 'sm:max-w-[370px]');
+
+      aspectReelBtn.className = 'px-2.5 py-1 rounded bg-primary text-on-primary text-[10px] font-bold tracking-wider transition-all cursor-pointer shadow-sm';
+      aspectCinemaBtn.className = 'px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface text-[10px] font-bold tracking-wider transition-all cursor-pointer';
+
+      if (window.showToast) window.showToast('Switched to 9:16 Vertical Reel Format');
+    });
+
+    aspectCinemaBtn.addEventListener('click', () => {
+      // Set to 16:9 Cinema Wide
+      reelWrapper.classList.remove('aspect-[9/16]', 'rounded-[36px]');
+      reelWrapper.classList.add('aspect-video', 'rounded-2xl');
+      outerContainer.classList.remove('max-w-[340px]', 'sm:max-w-[370px]');
+      outerContainer.classList.add('max-w-lg', 'lg:max-w-xl');
+
+      aspectCinemaBtn.className = 'px-2.5 py-1 rounded bg-primary text-on-primary text-[10px] font-bold tracking-wider transition-all cursor-pointer shadow-sm';
+      aspectReelBtn.className = 'px-2.5 py-1 rounded text-on-surface-variant hover:text-on-surface text-[10px] font-bold tracking-wider transition-all cursor-pointer';
+
+      if (window.showToast) window.showToast('Switched to 16:9 Cinema Widescreen Format');
+    });
+  }
+}
+
 // Automatically initialize on DOM ready
 if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initGlobalVideoAutoHide();
       initScreeningModal();
+      initHeroReel();
     });
   } else {
     initGlobalVideoAutoHide();
     initScreeningModal();
+    initHeroReel();
   }
 }
 
@@ -781,5 +957,6 @@ export {
   initCurriculumModal,
   setupWiper,
   initScreeningModal,
-  initGlobalVideoAutoHide
+  initGlobalVideoAutoHide,
+  initHeroReel
 };

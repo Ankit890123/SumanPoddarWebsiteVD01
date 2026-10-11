@@ -96,33 +96,96 @@ function initForms() {
   const contactForm = document.getElementById('contact-inquiry-form');
   const successMsg = document.getElementById('contact-success-msg');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = (document.getElementById('contact-name')?.value || 'Client').trim();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalBtnHTML = submitBtn ? submitBtn.innerHTML : 'Submit Inquiry';
+
+      const name = (document.getElementById('contact-name')?.value || '').trim();
       const email = (document.getElementById('contact-email')?.value || '').trim();
       const phone = (document.getElementById('contact-phone')?.value || '').trim();
       const notes = (document.getElementById('contact-notes')?.value || '').trim();
 
+      if (!name || !email || !phone || !notes) {
+        showToast('Please fill in all required fields.');
+        return;
+      }
+
+      // Set button to loading state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `
+          <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-on-primary inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+          </svg>
+          <span>Transmitting Brief...</span>
+        `;
+      }
+
       try {
-        const inquiries = JSON.parse(localStorage.getItem('technosra_contact_inquiries') || '[]');
-        inquiries.push({
-          name,
-          email,
-          phone,
-          notes,
-          timestamp: new Date().toISOString()
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            notes
+          })
         });
-        localStorage.setItem('technosra_contact_inquiries', JSON.stringify(inquiries));
-      } catch (err) {
-        // ignore storage errors
-      }
 
-      if (successMsg) {
-        successMsg.classList.remove('hidden');
-      }
+        const result = await response.json().catch(() => ({}));
 
-      showToast(`Thank you ${name}! Inquiry received. We'll contact you at ${email || phone}.`);
-      contactForm.reset();
+        if (response.ok && result.success !== false) {
+          // Backup to local client storage cache
+          try {
+            const inquiries = JSON.parse(localStorage.getItem('technosra_contact_inquiries') || '[]');
+            inquiries.push({
+              name,
+              email,
+              phone,
+              notes,
+              inquiry_id: result.inquiry_id,
+              timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('technosra_contact_inquiries', JSON.stringify(inquiries));
+          } catch (err) {}
+
+          if (successMsg) {
+            successMsg.textContent = result.message || `✓ Inquiry submitted successfully! The tecnosra team will reach out to you within 24 hours.`;
+            successMsg.classList.remove('hidden');
+          }
+
+          showToast(`Inquiry sent! Thank you ${name}.`);
+          contactForm.reset();
+        } else {
+          const errorMsg = result.error || 'Could not send inquiry. Please check your details.';
+          showToast(`Error: ${errorMsg}`);
+        }
+      } catch (networkErr) {
+        // Fallback to client cache if network offline
+        try {
+          const inquiries = JSON.parse(localStorage.getItem('technosra_contact_inquiries') || '[]');
+          inquiries.push({ name, email, phone, notes, timestamp: new Date().toISOString(), offline: true });
+          localStorage.setItem('technosra_contact_inquiries', JSON.stringify(inquiries));
+        } catch (e) {}
+
+        if (successMsg) {
+          successMsg.textContent = `✓ Inquiry saved offline! Suman Poddar & team will contact you at ${email || phone}.`;
+          successMsg.classList.remove('hidden');
+        }
+        showToast(`Inquiry saved! We will reach out shortly.`);
+        contactForm.reset();
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHTML;
+        }
+      }
     });
   }
 }

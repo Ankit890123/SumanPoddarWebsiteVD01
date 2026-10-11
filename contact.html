@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Contact // Studio Booking & Commercial Inquiries - tecnosra // Suman Poddar</title>
   <meta name="description" content="Book tecnosra Production House with Suman Poddar for commercial campaigns, video editing, videography, and creative visual direction." />
   <meta property="og:title" content="Contact // Studio Booking & Commercial Inquiries - tecnosra // Suman Poddar" />
   <meta property="og:description" content="Book tecnosra Production House with Suman Poddar for commercial campaigns, video editing, videography, and creative visual direction." />
 
-  <!-- Theme Initialization (Prevents FOUC) -->
+  <!-- Theme Initialization (Defaults to Light Mode on open) -->
   <script>
     (function() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
+      try {
+        const sessionTheme = sessionStorage.getItem('theme');
+        if (sessionTheme === 'dark') {
+          document.documentElement.classList.remove('light');
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+          if (!sessionTheme) {
+            localStorage.removeItem('theme');
+          }
+        }
+      } catch (e) {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
       }
     })();
   </script>
@@ -35,6 +48,9 @@
       theme: {
         extend: {
           colors: {
+            'electric-blue': '#00AEEF',
+            'bright-yellow': '#FFD400',
+            'deep-black': '#0B0B0F',
             'surface-container-lowest': 'rgb(var(--color-surface-container-lowest) / <alpha-value>)',
             'surface-container-low': 'rgb(var(--color-surface-container-low) / <alpha-value>)',
             'surface-container': 'rgb(var(--color-surface-container) / <alpha-value>)',
@@ -58,9 +74,12 @@
             'error': 'rgb(var(--color-error) / <alpha-value>)',
           },
           fontFamily: {
-            syne: ['Syne', 'sans-serif'],
-            space: ['Space Grotesk', 'monospace'],
-            jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+            sans: ['"Times New Roman"', 'Times', 'serif'],
+            serif: ['"Times New Roman"', 'Times', 'serif'],
+            mono: ['"Times New Roman"', 'Times', 'serif'],
+            syne: ['"Times New Roman"', 'Times', 'serif'],
+            space: ['"Times New Roman"', 'Times', 'serif'],
+            jakarta: ['"Times New Roman"', 'Times', 'serif'],
           },
           spacing: {
             'space-xxs': '2px',
@@ -96,7 +115,6 @@
           <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-11 h-11 object-contain group-hover:scale-105 transition-transform duration-200" />
           <div class="flex flex-col">
             <span class="font-syne font-bold text-sm tracking-wider text-on-surface uppercase group-hover:text-primary transition-colors">Techno SRA</span>
-            <span class="font-space font-medium text-[10px] tracking-widest text-on-surface-variant uppercase">TSRA • Suman Poddar</span>
           </div>
         </a>
       </div>
@@ -144,7 +162,7 @@
   <div id="mobile-nav-drawer" class="fixed inset-0 z-50 bg-surface-container-lowest/98 backdrop-blur-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 md:hidden">
     <div class="flex items-center justify-between border-b border-outline-variant/30 pb-4">
       <div class="flex items-center gap-3">
-        <img src="/tsra_logo.svg" alt="TSRA Techno SRA logo" class="w-9 h-9 object-contain" />
+        <img src="/src/assets/images/tsra_techno_logo.png" alt="TSRA Techno SRA logo" class="w-9 h-9 object-contain" />
         <span class="font-syne font-bold text-base text-primary uppercase">Techno SRA</span>
       </div>
       <div class="flex items-center gap-2">
